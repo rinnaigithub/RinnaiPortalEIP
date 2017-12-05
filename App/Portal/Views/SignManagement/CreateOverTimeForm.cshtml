@@ -1,0 +1,224 @@
+﻿@using Portal.Provider
+
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    string tooltipContentDefault = "<h4>您目前所在單位</h4><p><br>下拉選單打開後，<br>可輸入關鍵字搜尋部門。</p>";
+    string tooltipContentSupport = "<h4>您加班將支援的單位</h4><p><br>下拉選單打開後，<br>可輸入關鍵字搜尋部門。</p>";
+}
+
+<script src="~/Scripts/bootstrap-clockpicker.min.js"></script>
+<link href="~/Scripts/jquery-clockpicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-clockpicker.min.js"></script>
+<style>
+    .datepicker {
+        top: 114px;
+    }
+
+    .popover {
+        top: 180px;
+    }
+        .popover.top .arrow {
+        display:none!important;
+        }
+</style>
+<script src="~/Scripts/matrix.popover.js"></script>
+
+<div class="row-fluid">
+    <div class="span12">
+
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-align-justify"></i> </span>
+                <h5>新增忘記刷卡單</h5>
+            </div>
+            <div class="widget-content nopadding">
+                <form action="#" method="get" class="form-horizontal">
+                    @using (Html.BeginForm("CreateForgetPunchForm", "SignManagementController", FormMethod.Post, new { id = "frmForgetPunchAdd", @class = "form-horizontal" }))
+                    {
+
+                        <div class="control-group">
+                            <label class="control-label">申請人：</label>
+                            <div class="controls">
+                                <input type="text" name="name" value="@SignInProvider.Instance.User.Name" disabled />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">申請人部門單位：</label>
+                            <div class="controls">
+                                <input type="text" name="name" value="@SignInProvider.Instance.User.Department.Name" disabled />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">預設加班單位</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContentDefault" data-placement="right" data-toggle="popover" class="btn btn-info tooltip-dep">
+                                    @Html.DropDownList("defaultDepList", null, new { @id = "defaultDepList", @Name = "DepID" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">預設支援單位</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContentSupport" data-placement="right" data-toggle="popover" class="btn btn-warning tooltip-dep">
+                                    @Html.DropDownList("defaultSupportDepList", null, new { @id = "defaultSupportDepList", @Name = "DepID" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">加班時間(起)</label>
+                            <div class="controls">
+                                <input type="text" name="" class="datePicker">
+                                <input type="text" name="" id="startTime" class="clockpicker">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">加班時間(迄)</label>
+                            <div class="controls">
+                                <input type="text" name="" class="datePicker">
+                                <input type="text" name="" id="endTime" class="clockpicker">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Multiple Select input</label>
+                            <div class="controls">
+                                <select multiple>
+                                    <option>First option</option>
+                                    <option selected>Second option</option>
+                                    <option>Third option</option>
+                                    <option>Fourth option</option>
+                                    <option>Fifth option</option>
+                                    <option>Sixth option</option>
+                                    <option>Seventh option</option>
+                                    <option>Eighth option</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Radio inputs</label>
+                            <div class="controls">
+                                <label>
+                                    <input type="radio" name="radios" />
+                                    First One
+                                </label>
+                                <label>
+                                    <input type="radio" name="radios" />
+                                    Second One
+                                </label>
+                                <label>
+                                    <input type="radio" name="radios" />
+                                    Third One
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Checkboxes</label>
+                            <div class="controls">
+                                <label>
+                                    <input type="checkbox" name="radios" />
+                                    First One
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="radios" />
+                                    Second One
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="radios" />
+                                    Third One
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="checkboxes" class="control-label">Data Toggle checkbox</label>
+                            <div class="controls">
+                                <div data-toggle="buttons-checkbox" class="btn-group">
+                                    <button class="btn btn-primary" type="button">Left</button>
+                                    <button class="btn btn-primary" type="button">Middle</button>
+                                    <button class="btn btn-primary" type="button">Right</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="checkboxes" class="control-label">Data Radio button</label>
+                            <div class="controls">
+                                <div data-toggle="buttons-radio" class="btn-group">
+                                    <button class="btn btn-primary" type="button">Left</button>
+                                    <button class="btn btn-primary" type="button">Middle</button>
+                                    <button class="btn btn-primary" type="button">Right</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">File upload input</label>
+                            <div class="controls">
+                                <input type="file" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Disabled Input</label>
+                            <div class="controls">
+                                <input type="text" placeholder="You can't type anything…" disabled="" class="span11">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                    }
+            </div>
+        </div>
+    </div>
+</div>
+@section IncludeJS
+{
+    <script>
+
+        $(function () {
+            $(".tooltip-dep").popover();
+
+            $('#startTime').clockpicker({
+                autoclose: true,
+                placement: 'top',
+                align: 'left',
+                donetext: '設定'
+            });
+
+            $('#endTime').clockpicker({
+                autoclose: true,
+                placement: 'top',
+                align: 'left',
+                donetext: '設定'
+            });
+
+            $('.datePicker').datepicker(
+            {
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                //startDate: "today",
+                //clearBtn: true,
+                //calendarWeeks: true,
+                //todayHighlight: true,
+                //language: 'zh-TW'
+            });
+            evenInit();
+            selectInit();
+        })
+
+        function evenInit() {
+       
+        }
+
+        function selectInit() {
+            $("#defaultDepList,#defaultSupportDepList").select2({
+                placeholder: "請選擇部門",
+            });
+
+            $("#defaultDepList,#defaultSupportDepList").val('@SignInProvider.Instance.User.Department.ID').trigger('change');
+        }
+    </script>
+
+}

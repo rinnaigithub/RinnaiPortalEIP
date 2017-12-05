@@ -1,0 +1,290 @@
+﻿@using Portal.Models.MemberModels.MemberSaveModels
+@model MemberDataModel
+@using Newtonsoft.Json
+
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    string disable = Model.Disable.ToString().ToLower();
+}
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: white;
+        background-color: #ff6666;
+    }
+
+    .datepicker {
+        top: 130px;
+    }
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-info-sign"></i> </span>
+                <h5>使用者編輯</h5>
+            </div>
+            <div class="widget-content nopadding">
+
+                @using (Html.BeginForm("MemberEdit", "Member", FormMethod.Post, new { id = "frmEmpEdit", @class = "form-horizontal", novalidate = "novalidate" }))
+                {
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label">員工編號</label>
+                            <div class="controls">
+                                <input type="text" name="EmpID" id="EmpID" value="@Model.EmpID">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">AD帳號</label>
+                            <div class="controls">
+                                <input type="text" name="ADAccount" id="ADAccount" value="@Model.ADAccount">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">員工姓名</label>
+                            <div class="controls">
+                                <input type="text" name="EmpName" id="EmpName" value="@Model.EmpName">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">國籍</label>
+                            <div class="controls">
+                                <select id="nationality" name="Nationality">
+                                    <option value="TAIWAN">台灣</option>
+                                    <option value="JAPAN">日本</option>
+                                    <option value="VIETNAM">越南</option>
+                                    <option value="INDONESIA">印尼</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">性別</label>
+                            <div class="controls">
+                                <label>
+                                    <input type="radio" name="Gender" value="M" />
+                                    男性
+                                </label>
+                                <label>
+                                    <input type="radio" name="Gender" value="F" />
+                                    女性
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6">
+
+                        <div class="control-group">
+                            <label class="control-label">角色設定</label>
+                            <div class="controls">
+                                @Html.DropDownList("roleList", null, new { @id = "roleList", @Name = "Role", @multiple = "multiple" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">部門名稱</label>
+                            <div class="controls">
+                                @Html.DropDownList("depList", null, new { @id = "depList", @Name = "DepID" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">成本部門</label>
+                            <div class="controls">
+                                @Html.DropDownList("depList", null, new { @id = "costDepList", @Name = "CostDepID" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">狀態</label>
+                            <div class="controls">
+                                <label>
+                                    <input type="radio" name="Disable" value="false" />
+                                    啟用
+                                </label>
+                                <label>
+                                    <input type="radio" name="Disable" value="true" />
+                                    停用
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">停用日期</label>
+                            <div class="controls">
+                                <input type="text" name="DisableDate" id="DisableDate" class="datepicker">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <input type="button" id="frmSubmit" value="儲存" class="btn btn-info">
+                        <input type="button" id="frmCancel" value="取消" class="btn btn-warning" onclick="location.href='@Url.Content("~/Member/MemberList")'">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+    @section IncludeJS
+{
+        <script>
+
+            (function ($) {
+                $(function () {
+                    if ('@ViewBag.AddFail' != '') {
+                        confirmAlert('@ViewBag.AddFail');
+                    }
+
+                    if ('@ViewBag.AddSuccess' != '') {
+                        pNotifySuccessAlert('@ViewBag.AddSuccess');
+                    }
+                    //性別
+                    $("input[name=Gender][value='@Model.Gender']").prop("checked", true);
+                    //停用
+                    $("input[name=Disable][value='@disable.ToLower()']").prop("checked", true);
+                    //停用日
+                    $('#DisableDate').val('@Model.DisableDate');
+                    evenInit();
+                    select2Init();
+                })
+
+                function evenInit() {
+
+                    $("input[name=Disable][value='false']").on("click", function () {
+                        $('#DisableDate').val('');
+                    });
+
+                    $('#frmSubmit').click(function () {
+
+                        if ($("#frmEmpEdit").valid()) {
+                            //角色驗證
+                            var roleListSelect = $('#roleList').val();
+                            if (roleListSelect == null) {
+                                pNotifyErrorAlert('未選擇角色');
+                                return false;
+                            }
+                            //停用日期驗證
+                            var disbaleElemVal = $('input[name=Disable]:checked').val();
+                            if (disbaleElemVal == 'true') {
+                                var disblaeDate = $('#DisableDate').val();
+                                if (disblaeDate == '') {
+                                    pNotifyErrorAlert('未輸入停用日期');
+                                    return;
+                                }
+                            }
+                            $("#frmEmpEdit")[0].submit();
+                        } else {
+                            return false;
+                        }
+                    });
+
+
+                    $('#DisableDate').datepicker(
+                    {
+                        format: "yyyy-mm-dd",
+                        autoclose: true,
+                        startDate: "today",
+                        clearBtn: true,
+                        calendarWeeks: true,
+                        todayHighlight: true,
+                        language: 'zh-TW'
+                    });
+
+                }
+
+                function select2Init() {
+                    $("#roleList").select2({
+                        placeholder: "請選擇角色",
+                    });
+
+                    $("#nationality").select2({
+                        placeholder: "請選擇國家",
+                    });
+
+                    $("#depList").select2({
+                        placeholder: "請選擇部門",
+                    });
+                    $("#costDepList").select2({
+                        placeholder: "請選擇部門",
+                    });
+
+                    //角色
+                    var selectedProtoRoles = '@Html.Raw(JsonConvert.SerializeObject(Model.Role))';
+                    var selectedRoles = JSON.parse(selectedProtoRoles);
+                    $("#roleList").val(selectedRoles).trigger("change");
+                    //部門
+                    $("#depList").val('@Model.DepID').trigger('change');
+                    //成本部門
+                    $("#costDepList").val('@Model.CostDepID').trigger('change');
+                    //國家
+                    $("#nationality").val('@Model.Nationality').trigger('change');
+                }
+                var validator = $("#frmEmpEdit").validate({
+                    rules: {
+                        EmpID: { required: true },
+                        EmpName: { required: true },
+                        ADAccount: { required: true },
+                    },
+                    messages: {
+                        EmpID: { required: "請輸入員工ID" },
+                        EmpName: { required: "請輸入員工姓名" },
+                        ADAccount: { required: "請輸入ADAccount" },
+                    },
+                    //在Submit之前，且驗證失敗。
+                    invalidHandler: function () {
+                    },
+                    errorClass: "help-inline",
+                    errorElement: "span",
+                    ////單項證驗失敗，參數是驗證對像
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).parents('.control-group').removeClass('success');
+                        $(element).parents('.control-group').addClass('error');
+                        $(element).fadeOut(function () { $(element).fadeIn(); });
+
+                    },
+                    //單項證驗成功，參數是驗證對像
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).parents('.control-group').removeClass('error');
+                        $(element).parents('.control-group').addClass('success');
+
+                    }
+                })
+                function confirmAlert(msg) {
+                    //return false;
+                    $.confirm({
+                        type: 'orange',
+                        typeAnimated: true,
+                        theme: 'supervan',
+                        title: '提醒!',
+                        content: msg,
+                        buttons: {
+                            confirm: {
+                                text: '確定',
+                                action: function () {
+                                }
+                            },
+                        }
+                    });
+                }
+
+                function pNotifyErrorAlert(msg) {
+                    new PNotify({
+                        title: '資料未填寫完整!!',
+                        text: msg,
+                        type: 'error'
+                    });
+                }
+
+                function pNotifySuccessAlert(msg) {
+                    new PNotify({
+                        title: '成功!!',
+                        text: msg,
+                        type: 'success'
+                    });
+                }
+            })(jQuery);
+        </script>
+    }

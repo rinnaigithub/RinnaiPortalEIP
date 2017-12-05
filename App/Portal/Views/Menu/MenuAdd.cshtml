@@ -1,0 +1,234 @@
+﻿@using Portal.Models.MenuModels.MenuSaveModels
+@model MenuDataModel
+
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    int sort = Model.MenuSort == 0 ? 1 : Model.MenuSort;
+}
+
+<div class="row-fluid">
+    @using (Html.BeginForm("MenuAdd", "Menu", FormMethod.Post, new { id = "frmMenuAdd" }))
+    {
+        <input type="hidden" id="hdnEnabled" name="Enabled" value="" />
+        <input type="hidden" id="hdnMenuEnabled" name="MenuEnabled" value="" />
+        <div class="span11">
+
+            <div class="widget-box">
+
+                <div class="widget-title">
+                    <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>根目錄新增</h5>
+                </div>
+
+                <div class="widget-content">
+
+                    <div class="control">
+
+                        <div class="control-group">
+                            <input type="button" id="munuList" onclick="javascript: window.location = '/Menu/MenuList';" class="btn btn-lg btn-warning" value="返回根目錄列表" />
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">
+                                目錄名稱 :
+                            </label>
+                            <input type="text" id="" name="MenuName" class="span12" placeholder="請輸入目錄名稱" value="@Model.MenuName" />
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">
+                                目錄代碼 :
+                            </label>
+                            <input type="text" id="" name="MenuID" class="span12" placeholder="請輸入目錄代碼" value="@Model.MenuID" />
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">
+                                目錄路徑 :
+                            </label>
+                            <input type="text" id="" name="MenuPathController" class="span6" placeholder="請輸入ControllerName" value="@Model.MenuPathController" />
+                            @*<input type="text" id="" name="MenuPathAction" class="span6" placeholder="請輸入ActionName" value="@Model.MenuPathAction" />*@
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">目錄圖案</label>
+                            <div class="controls">
+                                <input type="text" id="menuIcon" name="MenuIcon" value="@Model.MenuIcon" />
+                            </div>
+                            <div class="controls">
+                                <input type="button" class="btn btn-warning" value="圖案" onclick="window.open('http://fontawesome.io/3.2.1/cheatsheet/', '_blank');" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">
+                                目錄排序 :
+                            </label>
+                            <input type="number" id="" name="MenuSort" class="span12" placeholder="請輸入排序順序" value="@sort" />
+                        </div>
+
+                        <div class="control-group" style="margin-bottom:40px;">
+                            <label for="checkboxes" class="control-label">狀態：</label>
+                            <div class="controls">
+                                <div data-toggle="buttons-radio" class="btn-group">
+                                    @if (Model.Enabled)
+                                    {
+                                        <button class="btn btn-info enabled active" type="button" value="true">啟用</button>
+                                        <button class="btn btn-info enabled" type="button" value="false">停用</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-info enabled" type="button" value="true">啟用</button>
+                                        <button class="btn btn-info enabled active" type="button" value="false">停用</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group" style="margin-bottom:40px;">
+                            <label for="checkboxes" class="control-label">選單顯示：</label>
+                            <div class="controls">
+                                <div data-toggle="buttons-radio" class="btn-group">
+                                    @if (Model.MenuEnabled)
+                                    {
+                                        <button class="btn btn-info menu-enabled active" type="button" value="true">顯示</button>
+                                        <button class="btn btn-info menu-enabled" type="button" value="false">隱藏</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-info menu-enabled" type="button" value="true">顯示</button>
+                                        <button class="btn btn-info menu-enabled active" type="button" value="false">隱藏</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="button" id="frmSubmit" class="btn btn-lg btn-success" value="建立" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section IncludeJS
+{
+    <script>
+        (function ($) {
+            $(function () {
+                if ('@ViewBag.AddFail' != '') {
+                    confirmAlert('@ViewBag.AddFail');
+                }
+                evenInit();
+            })
+
+            function confirmAlert(msg) {
+                //return false;
+                $.confirm({
+                    type: 'orange',
+                    typeAnimated: true,
+                    theme: 'supervan',
+                    title: '提醒!',
+                    content: msg,
+                    buttons: {
+                        confirm: {
+                            text: '確定',
+                            action: function () {
+                            }
+                        },
+                    }
+                });
+            }
+
+            function pNotifyErrorAlert(msg) {
+                new PNotify({
+                    title: '資料未填寫完整!!',
+                    text: msg,
+                    type: 'error'
+                });
+            }
+
+            function pNotifySuccessAlert(msg) {
+                new PNotify({
+                    title: 'success!!',
+                    text: msg,
+                    type: 'success'
+                });
+            }
+
+            var validator = $("#frmMenuAdd").validate({
+                rules: {
+                    MenuName: { required: true },
+                    MenuID: { required: true, ValidMenuID: true },
+                    MenuPathController: { required: true },
+                    //MenuPathAction: { required: true },
+                    MenuSort: { required: true }
+                },
+                messages: {
+                    MenuName: { required: "請輸入目錄名稱" },
+                    MenuID: { required: "請輸入目錄代碼", ValidMenuID: "根目錄代碼只能為一個字元" },
+                    MenuPathController: { required: "請輸入目錄路徑" },
+                    //MenuPathAction: { required: "請輸入目錄路徑" },
+                    MenuSort: { required: "請輸入目錄排序號碼" },
+                },
+                //在Submit之前，且驗證失敗。
+                invalidHandler: function () {
+                },
+                errorClass: "help-inline",
+                errorElement: "span",
+                ////單項證驗失敗，參數是驗證對像
+                highlight: function (element, errorClass, validClass) {
+                    $(element).parents('.control-group').removeClass('success');
+                    $(element).parents('.control-group').addClass('error');
+                    $(element).fadeOut(function () {
+                        $(element).fadeIn();
+                    });
+                },
+                //單項證驗成功，參數是驗證對像
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).parents('.control-group').removeClass('error');
+                    $(element).parents('.control-group').addClass('success');
+                }
+            })
+
+            //限制根目錄代碼只能是一個字元
+            jQuery.validator.addMethod("ValidMenuID", function (value, element) {
+                if (value.length > 1) {
+                    return false;
+                }
+                return true;
+            });
+            function evenInit() {
+                $('#frmSubmit').click(function () {
+                    //員工ID驗證
+                    var empID = $('#EmpID').val();
+                    if (empID == '') {
+                        pNotifyAlert('未選擇員工');
+                        return false;
+                    }
+
+                    if ($("#frmMenuAdd").valid()) {
+                        $('.enabled').each(function () {
+                            if ($(this).hasClass('active')) {
+                                var value = $(this).attr('value');
+                                $('#hdnEnabled').val(value);
+                            }
+                        });
+
+                        $('.menu-enabled').each(function () {
+                            if ($(this).hasClass('active')) {
+                                var value = $(this).attr('value');
+                                $('#hdnMenuEnabled').val(value);
+                            }
+                        });
+                        $("#frmMenuAdd")[0].submit();
+                    } else {
+                        return false;
+                    }
+                });
+            }
+
+        })(jQuery)
+    </script>
+}

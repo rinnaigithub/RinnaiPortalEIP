@@ -1,0 +1,1516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TESTHRISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'UAT.dbo.DAILYOFF' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="DAILYOFF">
+          <Key>
+            <PropertyRef Name="SYSTEMDATE" />
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="DUTYDATE" />
+            <PropertyRef Name="OFFWORK1" />
+            <PropertyRef Name="OFFWORK2" />
+            <PropertyRef Name="OFFWORK3" />
+            <PropertyRef Name="OFFWORK4" />
+            <PropertyRef Name="OFFWORK5" />
+            <PropertyRef Name="OFFWORK6" />
+            <PropertyRef Name="OFFWORK7" />
+            <PropertyRef Name="OFFWORK8" />
+            <PropertyRef Name="OFFWORK9" />
+            <PropertyRef Name="OFFWORK10" />
+            <PropertyRef Name="OFFWORK11" />
+            <PropertyRef Name="OFFWORK12" />
+            <PropertyRef Name="OFFWORKHOURS" />
+            <PropertyRef Name="OFFWORK5M" />
+            <PropertyRef Name="OFFWORK6M" />
+            <PropertyRef Name="RECREATEHOURS" />
+            <PropertyRef Name="CHANGEDATE" />
+            <PropertyRef Name="RECREATEDAYS" />
+            <PropertyRef Name="OFFHOURS" />
+            <PropertyRef Name="OffWork14" />
+            <PropertyRef Name="OffWork15" />
+            <PropertyRef Name="FORMID" />
+            <PropertyRef Name="ROWID" />
+            <PropertyRef Name="OFFWORK16" />
+            <PropertyRef Name="OFFWORK17" />
+            <PropertyRef Name="OFFWORK18" />
+            <PropertyRef Name="OFFWORK19" />
+          </Key>
+          <Property Name="SYSTEMDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SYSTEMTIME" Type="varchar" MaxLength="4" />
+          <Property Name="COMPANYCD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LOGINUSER" Type="varchar" MaxLength="10" />
+          <Property Name="APPROVEUSER" Type="varchar" MaxLength="10" />
+          <Property Name="APPROVEYN" Type="varchar" MaxLength="1" />
+          <Property Name="PAYYYYYMM" Type="varchar" MaxLength="6" />
+          <Property Name="DUTYDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="BEGINTIME" Type="varchar" MaxLength="4" />
+          <Property Name="ENDTIME" Type="varchar" MaxLength="4" />
+          <Property Name="OFFWORK1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK7" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK8" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK9" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK10" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK11" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK12" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK5M" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK6M" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="SEQNOX" Type="varchar" MaxLength="50" />
+          <Property Name="POSTEDYN" Type="varchar" MaxLength="1" />
+          <Property Name="REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="RESTYN" Type="varchar" MaxLength="1" />
+          <Property Name="RECREATEHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CHANGEDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="RECREATEDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="LeaveTimeBeg" Type="varchar" MaxLength="4" />
+          <Property Name="LeaveTimeEnd" Type="varchar" MaxLength="4" />
+          <Property Name="OffWork14" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OffWork15" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FORMID" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ROWID" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OFFWORK16" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK17" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK18" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK19" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CodeIndex" Type="decimal" Precision="2" Scale="0" />
+          <Property Name="DorH" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'UAT.dbo.DAILYON' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="DAILYON">
+          <Key>
+            <PropertyRef Name="SYSTEMDATE" />
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="DUTYDATE" />
+            <PropertyRef Name="OVERWORK1" />
+            <PropertyRef Name="OVERWORK2" />
+            <PropertyRef Name="OVERWORK3" />
+            <PropertyRef Name="OVERWORK4" />
+            <PropertyRef Name="OVERWORK5" />
+            <PropertyRef Name="OVERWORKHOURS" />
+            <PropertyRef Name="WORKHOURS" />
+            <PropertyRef Name="WORKDAYS" />
+            <PropertyRef Name="ADDHOURS" />
+            <PropertyRef Name="CHANGEDATE" />
+            <PropertyRef Name="MEALDELAY" />
+            <PropertyRef Name="FixedPay18" />
+            <PropertyRef Name="FixedPay19" />
+            <PropertyRef Name="FixedPay20" />
+            <PropertyRef Name="FixedPay21" />
+            <PropertyRef Name="FixedPay22" />
+            <PropertyRef Name="OffHours" />
+            <PropertyRef Name="LOffDate" />
+            <PropertyRef Name="MEALDELAY2" />
+            <PropertyRef Name="FORMID" />
+            <PropertyRef Name="ROWID" />
+            <PropertyRef Name="H_TYPE" />
+          </Key>
+          <Property Name="SYSTEMDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SYSTEMTIME" Type="varchar" MaxLength="4" />
+          <Property Name="COMPANYCD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LOGINUSER" Type="varchar" MaxLength="10" />
+          <Property Name="APPROVEUSER" Type="varchar" MaxLength="10" />
+          <Property Name="APPROVEYN" Type="varchar" MaxLength="1" />
+          <Property Name="PAYYYYYMM" Type="varchar" MaxLength="6" />
+          <Property Name="DUTYDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="BEGINTIME" Type="varchar" MaxLength="4" />
+          <Property Name="ENDTIME" Type="varchar" MaxLength="4" />
+          <Property Name="OVERONWORK" Type="varchar" MaxLength="4" />
+          <Property Name="OVEROFFWORK" Type="varchar" MaxLength="4" />
+          <Property Name="OVERWORK1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="HOLIDAY" Type="varchar" MaxLength="1" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="SEQNOX" Type="varchar" MaxLength="50" />
+          <Property Name="POSTEDYN" Type="varchar" MaxLength="1" />
+          <Property Name="REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="RESTYN" Type="varchar" MaxLength="1" />
+          <Property Name="ADDHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CHANGEDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="MEALDELAY" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnitCd" Type="varchar" MaxLength="10" />
+          <Property Name="CostCd" Type="varchar" MaxLength="10" />
+          <Property Name="FixedPay18" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay19" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay20" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay21" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay22" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OffHours" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="LOffDate" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="MEALDELAY2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FORMID" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ROWID" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="H_TYPE" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DAILYONOFF">
+          <Key>
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="DUTYDATE" />
+          </Key>
+          <Property Name="SYSTEMDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SYSTEMTIME" Type="varchar" MaxLength="4" />
+          <Property Name="COMPANYCD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LOGINUSER" Type="varchar" MaxLength="10" />
+          <Property Name="APPROVEUSER" Type="varchar" MaxLength="10" />
+          <Property Name="APPROVEYN" Type="varchar" MaxLength="1" />
+          <Property Name="POSTEDYN" Type="varchar" MaxLength="1" />
+          <Property Name="DUTYDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SEQNOX" Type="varchar" MaxLength="50" />
+          <Property Name="BEGINTIME" Type="varchar" MaxLength="4" />
+          <Property Name="ENDTIME" Type="varchar" MaxLength="4" />
+          <Property Name="PAYYYYYMM" Type="varchar" MaxLength="6" />
+          <Property Name="OVERWORK1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="RECREATEDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK7" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK8" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK9" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK10" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERONWORK" Type="varchar" MaxLength="4" />
+          <Property Name="OVEROFFWORK" Type="varchar" MaxLength="4" />
+          <Property Name="OFFWORK5M" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK6M" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ERRORYN" Type="varchar" MaxLength="2" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="HOLIDAY" Type="varchar" MaxLength="1" />
+          <Property Name="OFFHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ADDHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="MEALDELAY" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK11" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK12" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TAXHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="NEXTDAYYN" Type="varchar" MaxLength="1" />
+          <Property Name="MARK" Type="varchar" MaxLength="2" />
+          <Property Name="RESTYN" Type="varchar" MaxLength="1" />
+          <Property Name="BreakOn" Type="varchar" MaxLength="4" />
+          <Property Name="BreakOff" Type="varchar" MaxLength="4" />
+          <Property Name="LOSTTIMES" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="RemarkOn" Type="varchar" MaxLength="60" />
+          <Property Name="RemarkOff" Type="varchar" MaxLength="60" />
+          <Property Name="LeaveTimeBeg" Type="varchar" MaxLength="4" />
+          <Property Name="LeaveTimeEnd" Type="varchar" MaxLength="4" />
+          <Property Name="FixedPay18" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay19" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay20" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay21" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay22" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="UNITCD" Type="varchar" MaxLength="10" />
+          <Property Name="COSTCD" Type="varchar" MaxLength="10" />
+          <Property Name="RealOnDate" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="RealOffDate" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="OffWork14" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OffWork15" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK16" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK17" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK18" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK19" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FLAG" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="H_TYPE" Type="decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="DUTYWORK">
+          <Key>
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="WORKDATE" />
+          </Key>
+          <Property Name="COMPANYCD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WORKYYYYMM" Type="varchar" MaxLength="6" />
+          <Property Name="WORKDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="HALFDAY" Type="varchar" MaxLength="1" />
+          <Property Name="AutoInfo" Type="varchar" MaxLength="1" />
+          <Property Name="Subject" Type="varchar" MaxLength="100" />
+          <Property Name="HOLIDAY" Type="varchar" MaxLength="1" />
+          <Property Name="WORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="JOBHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ADDHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WorkDays" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="rowid" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardNo" Type="varchar" MaxLength="16" />
+          <Property Name="RosterAmt" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CarAllowAmt" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MealAllowAmt" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PayYYYYMM" Type="varchar" MaxLength="6" />
+          <Property Name="WorkDateEnd" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="H_TYPE" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LEAVECD" Type="varchar" MaxLength="10" />
+          <Property Name="SYSTEMDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SYSTEMTIME" Type="varchar" MaxLength="4" />
+          <Property Name="LOGINUSER" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMPLOYECD" />
+          </Key>
+          <Property Name="COMPANYCD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DEPARTCD" Type="varchar" MaxLength="10" />
+          <Property Name="UNITCD" Type="varchar" MaxLength="10" />
+          <Property Name="COSTTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="HIRETYPE" Type="varchar" MaxLength="2" />
+          <Property Name="CHINESENAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="ENGLISHNAME" Type="varchar" MaxLength="30" />
+          <Property Name="TITLECD" Type="varchar" MaxLength="10" />
+          <Property Name="TITLEGD" Type="varchar" MaxLength="10" />
+          <Property Name="JOBFAMILY" Type="varchar" MaxLength="10" />
+          <Property Name="TECHCD" Type="varchar" MaxLength="10" />
+          <Property Name="INCOMECD" Type="varchar" MaxLength="2" />
+          <Property Name="PASSYN" Type="varchar" MaxLength="1" />
+          <Property Name="EDUCATEGD" Type="varchar" MaxLength="10" />
+          <Property Name="GRADSCHOOL" Type="nvarchar" MaxLength="100" />
+          <Property Name="GRADDEPART" Type="nvarchar" MaxLength="100" />
+          <Property Name="GRADYEAR" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="WORKPLACE" Type="varchar" MaxLength="10" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="NATIONCD" Type="varchar" MaxLength="10" />
+          <Property Name="LICENSECD" Type="varchar" MaxLength="10" />
+          <Property Name="MILITARY" Type="varchar" MaxLength="10" />
+          <Property Name="CARDNO" Type="varchar" MaxLength="30" />
+          <Property Name="SEXTYPE" Type="varchar" MaxLength="1" />
+          <Property Name="BLOODTYPE" Type="varchar" MaxLength="2" />
+          <Property Name="IDNUMBER" Type="varchar" MaxLength="16" />
+          <Property Name="IDCHECK" Type="varchar" MaxLength="1" />
+          <Property Name="MARRIAGE" Type="varchar" MaxLength="2" />
+          <Property Name="BIRTHDAY" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="PASSPORT" Type="varchar" MaxLength="16" />
+          <Property Name="URGENTTO" Type="nvarchar" MaxLength="30" />
+          <Property Name="URGENTTELNO" Type="varchar" MaxLength="30" />
+          <Property Name="RELATIONSHIP" Type="varchar" MaxLength="10" />
+          <Property Name="HOMEADDRESS" Type="varchar" MaxLength="60" />
+          <Property Name="TEMPADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="HOMETELNO" Type="varchar" MaxLength="30" />
+          <Property Name="TEMPTELNO" Type="varchar" MaxLength="30" />
+          <Property Name="CELLULARNO" Type="varchar" MaxLength="30" />
+          <Property Name="BIBICALL" Type="varchar" MaxLength="30" />
+          <Property Name="BANKACCOUNT" Type="varchar" MaxLength="18" />
+          <Property Name="TAXMANS" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="HEALTHMANS" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="LABORDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="LABORAMOUNT" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="HEALTHDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="HEALTHAMOUNT" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="GROUPYN" Type="varchar" MaxLength="1" />
+          <Property Name="ACCIDENTYN" Type="varchar" MaxLength="1" />
+          <Property Name="MOTORHLYN" Type="varchar" MaxLength="1" />
+          <Property Name="CARYN" Type="varchar" MaxLength="1" />
+          <Property Name="MOTORMM" Type="varchar" MaxLength="2" />
+          <Property Name="CARMM" Type="varchar" MaxLength="2" />
+          <Property Name="OTHERINSYN" Type="varchar" MaxLength="1" />
+          <Property Name="OTHERDEDYN" Type="varchar" MaxLength="1" />
+          <Property Name="ADDYN" Type="varchar" MaxLength="1" />
+          <Property Name="OFFYN" Type="varchar" MaxLength="1" />
+          <Property Name="BASICPAY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="JOBSTATUS" Type="varchar" MaxLength="10" />
+          <Property Name="FULLMONTH" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="FULLTYPE" Type="varchar" MaxLength="6" />
+          <Property Name="HIREDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENDDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="QUITDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="REHIREDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="OFFJOBBEG" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="OFFJOBEND" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="MEALYN" Type="varchar" MaxLength="1" />
+          <Property Name="BODYSTATUS" Type="varchar" MaxLength="10" />
+          <Property Name="MAXADDPAY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="WORKHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="INHOUSEDAYS" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="QUITDAYS" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="OUTDOORDAYS" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ADDDAYS" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="RECREATEDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="INCREASEDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="USEDDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="REGIONCD" Type="varchar" MaxLength="10" />
+          <Property Name="LASTFMONTH" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="UNUSEDDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CUTOFFDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="POSTYN" Type="varchar" MaxLength="1" />
+          <Property Name="ADDOFFHOURS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="BANKCD" Type="varchar" MaxLength="10" />
+          <Property Name="DEPARTCDOLD" Type="varchar" MaxLength="10" />
+          <Property Name="UNITCDOLD" Type="varchar" MaxLength="10" />
+          <Property Name="REGIONCDOLD" Type="varchar" MaxLength="10" />
+          <Property Name="GROUPCD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMAILADDRESS" Type="varchar" MaxLength="60" />
+          <Property Name="SEQUENTIALNO" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENDLABORDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENDHEALTHDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="UPGRADEDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="LASTYEARDAYS" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKRATEC1" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM1" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEC2" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM2" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEC3" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM3" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEC4" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM4" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="RESTTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="DIRECTBOSS" Type="varchar" MaxLength="10" />
+          <Property Name="WORKRATEC5" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM5" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEC1" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEM1" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEC2" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEM2" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEC3" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEM3" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="GroupMans" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="BANKCD2" Type="varchar" MaxLength="10" />
+          <Property Name="CardYN" Type="varchar" MaxLength="1" />
+          <Property Name="ToYouWish" Type="varchar" MaxLength="120" />
+          <Property Name="BANKACCOUNT2" Type="varchar" MaxLength="18" />
+          <Property Name="Currency" Type="varchar" MaxLength="6" />
+          <Property Name="PassWord" Type="varchar" MaxLength="10" />
+          <Property Name="ISBoss" Type="varchar" MaxLength="1" />
+          <Property Name="BossLevel" Type="varchar" MaxLength="2" />
+          <Property Name="CostCenter" Type="varchar" MaxLength="10" />
+          <Property Name="SendMail" Type="varchar" MaxLength="1" />
+          <Property Name="JoinNewDate" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="QuitNewDate" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="FundAccrueYn" Type="varchar" MaxLength="1" />
+          <Property Name="FundBase" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FundRateEmp" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FundRateCmp" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="PayOffWork1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="PayOffWork2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FundType" Type="varchar" MaxLength="1" />
+          <Property Name="ResidenceNo" Type="varchar" MaxLength="16" />
+          <Property Name="TaxNo" Type="varchar" MaxLength="16" />
+          <Property Name="BankIDNo" Type="varchar" MaxLength="16" />
+          <Property Name="ComeInDate" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="OutDate" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="taxrate" Type="decimal" Precision="6" Scale="4" Nullable="false" />
+          <Property Name="NHINS2YN" Type="varchar" MaxLength="1" />
+          <Property Name="Language" Type="varchar" MaxLength="1" />
+          <Property Name="ObliUp" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="ObliDn" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="INCENTIVERATE" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'UAT.dbo.LOSTCARD' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="LOSTCARD">
+          <Key>
+            <PropertyRef Name="CARDNO" />
+            <PropertyRef Name="CARDDATE" />
+            <PropertyRef Name="FLAG" />
+            <PropertyRef Name="ROWID" />
+          </Key>
+          <Property Name="CARDNO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CARDDATE" Type="decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="CARDTIME" Type="varchar" MaxLength="4" />
+          <Property Name="CARDTYPE" Type="varchar" MaxLength="10" />
+          <Property Name="FLAG" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ROWID" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sequenceid" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WORKTIME">
+          <Key>
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="WORKTYPE" />
+          </Key>
+          <Property Name="COMPANYCD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WORKTYPE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WORKONSAT" Type="varchar" MaxLength="1" />
+          <Property Name="MORNINGTIME" Type="varchar" MaxLength="4" />
+          <Property Name="MAXMORNINGTIME" Type="varchar" MaxLength="4" />
+          <Property Name="NEXTDAYYN" Type="varchar" MaxLength="1" />
+          <Property Name="OFFWORKTIME" Type="varchar" MaxLength="4" />
+          <Property Name="DELAYTIME" Type="varchar" MaxLength="4" />
+          <Property Name="DELAYHOUR" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NOONTIME" Type="varchar" MaxLength="4" />
+          <Property Name="NOONHOUR" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="ADDWORKTIME" Type="varchar" MaxLength="4" />
+          <Property Name="OVERWORKTIME" Type="varchar" MaxLength="4" />
+          <Property Name="afternoontime" Type="varchar" MaxLength="4" />
+          <Property Name="finalofftime" Type="varchar" MaxLength="4" />
+          <Property Name="WORKHOURSM" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKHOURSD" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="RECORDTIMES" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="ROSTERAMT" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="RosterHrs" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="NoonTime2" Type="varchar" MaxLength="4" />
+          <Property Name="NoonHour2" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NoonTime3" Type="varchar" MaxLength="4" />
+          <Property Name="NoonHour3" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NoonTime4" Type="varchar" MaxLength="4" />
+          <Property Name="NoonHour4" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NoonTime5" Type="varchar" MaxLength="4" />
+          <Property Name="NoonHour5" Type="decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SysAuto" Type="decimal" Precision="2" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TESTHRISModelStoreContainer">
+          <EntitySet Name="DAILYONOFF" EntityType="Self.DAILYONOFF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DUTYWORK" EntityType="Self.DUTYWORK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WORKTIME" EntityType="Self.WORKTIME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DAILYOFF" EntityType="Self.DAILYOFF" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DAILYOFF].[SYSTEMDATE] AS [SYSTEMDATE], 
+    [DAILYOFF].[SYSTEMTIME] AS [SYSTEMTIME], 
+    [DAILYOFF].[COMPANYCD] AS [COMPANYCD], 
+    [DAILYOFF].[EMPLOYECD] AS [EMPLOYECD], 
+    [DAILYOFF].[LOGINUSER] AS [LOGINUSER], 
+    [DAILYOFF].[APPROVEUSER] AS [APPROVEUSER], 
+    [DAILYOFF].[APPROVEYN] AS [APPROVEYN], 
+    [DAILYOFF].[PAYYYYYMM] AS [PAYYYYYMM], 
+    [DAILYOFF].[DUTYDATE] AS [DUTYDATE], 
+    [DAILYOFF].[BEGINTIME] AS [BEGINTIME], 
+    [DAILYOFF].[ENDTIME] AS [ENDTIME], 
+    [DAILYOFF].[OFFWORK1] AS [OFFWORK1], 
+    [DAILYOFF].[OFFWORK2] AS [OFFWORK2], 
+    [DAILYOFF].[OFFWORK3] AS [OFFWORK3], 
+    [DAILYOFF].[OFFWORK4] AS [OFFWORK4], 
+    [DAILYOFF].[OFFWORK5] AS [OFFWORK5], 
+    [DAILYOFF].[OFFWORK6] AS [OFFWORK6], 
+    [DAILYOFF].[OFFWORK7] AS [OFFWORK7], 
+    [DAILYOFF].[OFFWORK8] AS [OFFWORK8], 
+    [DAILYOFF].[OFFWORK9] AS [OFFWORK9], 
+    [DAILYOFF].[OFFWORK10] AS [OFFWORK10], 
+    [DAILYOFF].[OFFWORK11] AS [OFFWORK11], 
+    [DAILYOFF].[OFFWORK12] AS [OFFWORK12], 
+    [DAILYOFF].[OFFWORKHOURS] AS [OFFWORKHOURS], 
+    [DAILYOFF].[OFFWORK5M] AS [OFFWORK5M], 
+    [DAILYOFF].[OFFWORK6M] AS [OFFWORK6M], 
+    [DAILYOFF].[WORKTYPE] AS [WORKTYPE], 
+    [DAILYOFF].[SEQNOX] AS [SEQNOX], 
+    [DAILYOFF].[POSTEDYN] AS [POSTEDYN], 
+    [DAILYOFF].[REMARK] AS [REMARK], 
+    [DAILYOFF].[RESTYN] AS [RESTYN], 
+    [DAILYOFF].[RECREATEHOURS] AS [RECREATEHOURS], 
+    [DAILYOFF].[CHANGEDATE] AS [CHANGEDATE], 
+    [DAILYOFF].[RECREATEDAYS] AS [RECREATEDAYS], 
+    [DAILYOFF].[OFFHOURS] AS [OFFHOURS], 
+    [DAILYOFF].[LeaveTimeBeg] AS [LeaveTimeBeg], 
+    [DAILYOFF].[LeaveTimeEnd] AS [LeaveTimeEnd], 
+    [DAILYOFF].[OffWork14] AS [OffWork14], 
+    [DAILYOFF].[OffWork15] AS [OffWork15], 
+    [DAILYOFF].[FORMID] AS [FORMID], 
+    [DAILYOFF].[ROWID] AS [ROWID], 
+    [DAILYOFF].[OFFWORK16] AS [OFFWORK16], 
+    [DAILYOFF].[OFFWORK17] AS [OFFWORK17], 
+    [DAILYOFF].[OFFWORK18] AS [OFFWORK18], 
+    [DAILYOFF].[OFFWORK19] AS [OFFWORK19], 
+    [DAILYOFF].[CodeIndex] AS [CodeIndex], 
+    [DAILYOFF].[DorH] AS [DorH]
+    FROM [dbo].[DAILYOFF] AS [DAILYOFF]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DAILYON" EntityType="Self.DAILYON" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DAILYON].[SYSTEMDATE] AS [SYSTEMDATE], 
+    [DAILYON].[SYSTEMTIME] AS [SYSTEMTIME], 
+    [DAILYON].[COMPANYCD] AS [COMPANYCD], 
+    [DAILYON].[EMPLOYECD] AS [EMPLOYECD], 
+    [DAILYON].[LOGINUSER] AS [LOGINUSER], 
+    [DAILYON].[APPROVEUSER] AS [APPROVEUSER], 
+    [DAILYON].[APPROVEYN] AS [APPROVEYN], 
+    [DAILYON].[PAYYYYYMM] AS [PAYYYYYMM], 
+    [DAILYON].[DUTYDATE] AS [DUTYDATE], 
+    [DAILYON].[BEGINTIME] AS [BEGINTIME], 
+    [DAILYON].[ENDTIME] AS [ENDTIME], 
+    [DAILYON].[OVERONWORK] AS [OVERONWORK], 
+    [DAILYON].[OVEROFFWORK] AS [OVEROFFWORK], 
+    [DAILYON].[OVERWORK1] AS [OVERWORK1], 
+    [DAILYON].[OVERWORK2] AS [OVERWORK2], 
+    [DAILYON].[OVERWORK3] AS [OVERWORK3], 
+    [DAILYON].[OVERWORK4] AS [OVERWORK4], 
+    [DAILYON].[OVERWORK5] AS [OVERWORK5], 
+    [DAILYON].[OVERWORKHOURS] AS [OVERWORKHOURS], 
+    [DAILYON].[WORKHOURS] AS [WORKHOURS], 
+    [DAILYON].[WORKDAYS] AS [WORKDAYS], 
+    [DAILYON].[HOLIDAY] AS [HOLIDAY], 
+    [DAILYON].[WORKTYPE] AS [WORKTYPE], 
+    [DAILYON].[SEQNOX] AS [SEQNOX], 
+    [DAILYON].[POSTEDYN] AS [POSTEDYN], 
+    [DAILYON].[REMARK] AS [REMARK], 
+    [DAILYON].[RESTYN] AS [RESTYN], 
+    [DAILYON].[ADDHOURS] AS [ADDHOURS], 
+    [DAILYON].[CHANGEDATE] AS [CHANGEDATE], 
+    [DAILYON].[MEALDELAY] AS [MEALDELAY], 
+    [DAILYON].[UnitCd] AS [UnitCd], 
+    [DAILYON].[CostCd] AS [CostCd], 
+    [DAILYON].[FixedPay18] AS [FixedPay18], 
+    [DAILYON].[FixedPay19] AS [FixedPay19], 
+    [DAILYON].[FixedPay20] AS [FixedPay20], 
+    [DAILYON].[FixedPay21] AS [FixedPay21], 
+    [DAILYON].[FixedPay22] AS [FixedPay22], 
+    [DAILYON].[OffHours] AS [OffHours], 
+    [DAILYON].[LOffDate] AS [LOffDate], 
+    [DAILYON].[MEALDELAY2] AS [MEALDELAY2], 
+    [DAILYON].[FORMID] AS [FORMID], 
+    [DAILYON].[ROWID] AS [ROWID], 
+    [DAILYON].[H_TYPE] AS [H_TYPE]
+    FROM [dbo].[DAILYON] AS [DAILYON]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LOSTCARD" EntityType="Self.LOSTCARD" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LOSTCARD].[CARDNO] AS [CARDNO], 
+    [LOSTCARD].[CARDDATE] AS [CARDDATE], 
+    [LOSTCARD].[CARDTIME] AS [CARDTIME], 
+    [LOSTCARD].[CARDTYPE] AS [CARDTYPE], 
+    [LOSTCARD].[FLAG] AS [FLAG], 
+    [LOSTCARD].[ROWID] AS [ROWID], 
+    [LOSTCARD].[Sequenceid] AS [Sequenceid]
+    FROM [dbo].[LOSTCARD] AS [LOSTCARD]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TESTHRISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DUTYWORK">
+          <Key>
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="WORKDATE" />
+          </Key>
+          <Property Name="COMPANYCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WORKYYYYMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="WORKDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HALFDAY" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AutoInfo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HOLIDAY" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WORKHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="JOBHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="ADDHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WorkDays" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="rowid" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="RosterAmt" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CarAllowAmt" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MealAllowAmt" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PayYYYYMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDateEnd" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="H_TYPE" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LEAVECD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SYSTEMDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SYSTEMTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LOGINUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMPLOYECD" />
+          </Key>
+          <Property Name="COMPANYCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DEPARTCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UNITCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="COSTTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HIRETYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CHINESENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ENGLISHNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TITLECD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TITLEGD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JOBFAMILY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TECHCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="INCOMECD" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="PASSYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="EDUCATEGD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GRADSCHOOL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GRADDEPART" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GRADYEAR" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="WORKPLACE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NATIONCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LICENSECD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MILITARY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CARDNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SEXTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BLOODTYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="IDNUMBER" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="IDCHECK" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MARRIAGE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="BIRTHDAY" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="PASSPORT" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="URGENTTO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="URGENTTELNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RELATIONSHIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HOMEADDRESS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="TEMPADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HOMETELNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TEMPTELNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CELLULARNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BIBICALL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BANKACCOUNT" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="TAXMANS" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="HEALTHMANS" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="LABORDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="LABORAMOUNT" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="HEALTHDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="HEALTHAMOUNT" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="GROUPYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ACCIDENTYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MOTORHLYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CARYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MOTORMM" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CARMM" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="OTHERINSYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OTHERDEDYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ADDYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OFFYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BASICPAY" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="JOBSTATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FULLMONTH" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="FULLTYPE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="HIREDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENDDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="QUITDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="REHIREDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="OFFJOBBEG" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="OFFJOBEND" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="MEALYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BODYSTATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MAXADDPAY" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="WORKHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="INHOUSEDAYS" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="QUITDAYS" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="OUTDOORDAYS" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ADDDAYS" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="RECREATEDAYS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="INCREASEDAYS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="USEDDAYS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="REGIONCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LASTFMONTH" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="UNUSEDDAYS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CUTOFFDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="POSTYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ADDOFFHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="BANKCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DEPARTCDOLD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UNITCDOLD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="REGIONCDOLD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GROUPCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAILADDRESS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SEQUENTIALNO" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENDLABORDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="ENDHEALTHDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="UPGRADEDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="LASTYEARDAYS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKRATEC1" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM1" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEC2" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM2" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEC3" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM3" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEC4" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM4" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="RESTTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECTBOSS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WORKRATEC5" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="WORKRATEM5" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEC1" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEM1" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEC2" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEM2" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEC3" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="OFFWRATEM3" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="GroupMans" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="BANKCD2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CardYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ToYouWish" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="BANKACCOUNT2" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ISBoss" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BossLevel" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CostCenter" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SendMail" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="JoinNewDate" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="QuitNewDate" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="FundAccrueYn" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FundBase" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FundRateEmp" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FundRateCmp" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="PayOffWork1" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="PayOffWork2" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FundType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ResidenceNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="TaxNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="BankIDNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ComeInDate" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="OutDate" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="taxrate" Type="Decimal" Precision="6" Scale="4" Nullable="false" />
+          <Property Name="NHINS2YN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ObliUp" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="ObliDn" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="INCENTIVERATE" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WORKTIME">
+          <Key>
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="WORKTYPE" />
+          </Key>
+          <Property Name="COMPANYCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WORKONSAT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MORNINGTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="MAXMORNINGTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NEXTDAYYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OFFWORKTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="DELAYTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="DELAYHOUR" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NOONTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NOONHOUR" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="ADDWORKTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OVERWORKTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="afternoontime" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="finalofftime" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="WORKHOURSM" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKHOURSD" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="RECORDTIMES" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="ROSTERAMT" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="RosterHrs" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="NoonTime2" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NoonHour2" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NoonTime3" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NoonHour3" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NoonTime4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NoonHour4" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="NoonTime5" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NoonHour5" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SysAuto" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DAILYOFF">
+          <Key>
+            <PropertyRef Name="SYSTEMDATE" />
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="DUTYDATE" />
+            <PropertyRef Name="OFFWORK1" />
+            <PropertyRef Name="OFFWORK2" />
+            <PropertyRef Name="OFFWORK3" />
+            <PropertyRef Name="OFFWORK4" />
+            <PropertyRef Name="OFFWORK5" />
+            <PropertyRef Name="OFFWORK6" />
+            <PropertyRef Name="OFFWORK7" />
+            <PropertyRef Name="OFFWORK8" />
+            <PropertyRef Name="OFFWORK9" />
+            <PropertyRef Name="OFFWORK10" />
+            <PropertyRef Name="OFFWORK11" />
+            <PropertyRef Name="OFFWORK12" />
+            <PropertyRef Name="OFFWORKHOURS" />
+            <PropertyRef Name="OFFWORK5M" />
+            <PropertyRef Name="OFFWORK6M" />
+            <PropertyRef Name="RECREATEHOURS" />
+            <PropertyRef Name="CHANGEDATE" />
+            <PropertyRef Name="RECREATEDAYS" />
+            <PropertyRef Name="OFFHOURS" />
+            <PropertyRef Name="OffWork14" />
+            <PropertyRef Name="OffWork15" />
+            <PropertyRef Name="FORMID" />
+            <PropertyRef Name="ROWID" />
+            <PropertyRef Name="OFFWORK16" />
+            <PropertyRef Name="OFFWORK17" />
+            <PropertyRef Name="OFFWORK18" />
+            <PropertyRef Name="OFFWORK19" />
+          </Key>
+          <Property Name="SYSTEMDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SYSTEMTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANYCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LOGINUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="APPROVEUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="APPROVEYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PAYYYYYMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DUTYDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="BEGINTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ENDTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OFFWORK1" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK2" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK3" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK4" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK5" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK6" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK7" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK8" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK9" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK10" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK11" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK12" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORKHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK5M" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK6M" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SEQNOX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSTEDYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RESTYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RECREATEHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CHANGEDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="RECREATEDAYS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OFFHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="LeaveTimeBeg" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveTimeEnd" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OffWork14" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OffWork15" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FORMID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ROWID" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OFFWORK16" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK17" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK18" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OFFWORK19" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="CodeIndex" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="DorH" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DAILYON">
+          <Key>
+            <PropertyRef Name="SYSTEMDATE" />
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="DUTYDATE" />
+            <PropertyRef Name="OVERWORK1" />
+            <PropertyRef Name="OVERWORK2" />
+            <PropertyRef Name="OVERWORK3" />
+            <PropertyRef Name="OVERWORK4" />
+            <PropertyRef Name="OVERWORK5" />
+            <PropertyRef Name="OVERWORKHOURS" />
+            <PropertyRef Name="WORKHOURS" />
+            <PropertyRef Name="WORKDAYS" />
+            <PropertyRef Name="ADDHOURS" />
+            <PropertyRef Name="CHANGEDATE" />
+            <PropertyRef Name="MEALDELAY" />
+            <PropertyRef Name="FixedPay18" />
+            <PropertyRef Name="FixedPay19" />
+            <PropertyRef Name="FixedPay20" />
+            <PropertyRef Name="FixedPay21" />
+            <PropertyRef Name="FixedPay22" />
+            <PropertyRef Name="OffHours" />
+            <PropertyRef Name="LOffDate" />
+            <PropertyRef Name="MEALDELAY2" />
+            <PropertyRef Name="FORMID" />
+            <PropertyRef Name="ROWID" />
+            <PropertyRef Name="H_TYPE" />
+          </Key>
+          <Property Name="SYSTEMDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="SYSTEMTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANYCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYECD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LOGINUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="APPROVEUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="APPROVEYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PAYYYYYMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DUTYDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="BEGINTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ENDTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OVERONWORK" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OVEROFFWORK" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OVERWORK1" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK2" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK3" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK4" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORK5" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="OVERWORKHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="WORKDAYS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="HOLIDAY" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SEQNOX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSTEDYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RESTYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ADDHOURS" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CHANGEDATE" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="MEALDELAY" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnitCd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CostCd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FixedPay18" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay19" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay20" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay21" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FixedPay22" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="OffHours" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="LOffDate" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="MEALDELAY2" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="FORMID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ROWID" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="H_TYPE" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HRISDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DUTYWORK" EntityType="Self.DUTYWORK" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="WORKTIME" EntityType="Self.WORKTIME" />
+          <EntitySet Name="DAILYOFF" EntityType="Self.DAILYOFF" />
+          <EntitySet Name="DAILYON" EntityType="Self.DAILYON" />
+          <EntitySet Name="DAILYONOFF" EntityType="TESTHRISModel.DAILYONOFF" />
+          <EntitySet Name="LOSTCARD" EntityType="TESTHRISModel.LOSTCARD" />
+        </EntityContainer>
+        <EntityType Name="DAILYONOFF">
+          <Key>
+            <PropertyRef Name="COMPANYCD" />
+            <PropertyRef Name="EMPLOYECD" />
+            <PropertyRef Name="DUTYDATE" />
+          </Key>
+          <Property Name="SYSTEMDATE" Type="Decimal" Nullable="false" Precision="8" Scale="0" />
+          <Property Name="SYSTEMTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANYCD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EMPLOYECD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LOGINUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="APPROVEUSER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="APPROVEYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="POSTEDYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DUTYDATE" Type="Decimal" Nullable="false" Precision="8" Scale="0" />
+          <Property Name="SEQNOX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BEGINTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ENDTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PAYYYYYMM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="OVERWORK1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OVERWORK2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OVERWORK3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OVERWORK4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OVERWORK5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="RECREATEDAYS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="WORKHOURS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="WORKDAYS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK7" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK8" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK9" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK10" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OVERONWORK" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OVEROFFWORK" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="OFFWORK5M" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK6M" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ERRORYN" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="WORKTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HOLIDAY" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OFFHOURS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="ADDHOURS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OVERWORKHOURS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="MEALDELAY" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK11" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK12" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORKHOURS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="TAXHOURS" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="NEXTDAYYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MARK" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="RESTYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BreakOn" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BreakOff" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LOSTTIMES" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="RemarkOn" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RemarkOff" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveTimeBeg" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveTimeEnd" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="FixedPay18" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="FixedPay19" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="FixedPay20" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="FixedPay21" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="FixedPay22" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="UNITCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="COSTCD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RealOnDate" Type="Decimal" Nullable="false" Precision="8" Scale="0" />
+          <Property Name="RealOffDate" Type="Decimal" Nullable="false" Precision="8" Scale="0" />
+          <Property Name="OffWork14" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OffWork15" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="OFFWORK16" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="OFFWORK17" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="OFFWORK18" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="OFFWORK19" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="FLAG" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+          <Property Name="H_TYPE" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="LOSTCARD">
+          <Key>
+            <PropertyRef Name="CARDNO" />
+            <PropertyRef Name="CARDDATE" />
+            <PropertyRef Name="FLAG" />
+            <PropertyRef Name="ROWID" />
+          </Key>
+          <Property Name="CARDNO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CARDDATE" Type="Decimal" Nullable="false" Precision="8" Scale="0" />
+          <Property Name="CARDTIME" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CARDTYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FLAG" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+          <Property Name="ROWID" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sequenceid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TESTHRISModelStoreContainer" CdmEntityContainer="HRISDB">
+          <EntitySetMapping Name="DUTYWORK">
+            <EntityTypeMapping TypeName="TESTHRISModel.DUTYWORK">
+              <MappingFragment StoreEntitySet="DUTYWORK">
+                <ScalarProperty Name="COMPANYCD" ColumnName="COMPANYCD" />
+                <ScalarProperty Name="EMPLOYECD" ColumnName="EMPLOYECD" />
+                <ScalarProperty Name="WORKYYYYMM" ColumnName="WORKYYYYMM" />
+                <ScalarProperty Name="WORKDATE" ColumnName="WORKDATE" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="HALFDAY" ColumnName="HALFDAY" />
+                <ScalarProperty Name="AutoInfo" ColumnName="AutoInfo" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="HOLIDAY" ColumnName="HOLIDAY" />
+                <ScalarProperty Name="WORKHOURS" ColumnName="WORKHOURS" />
+                <ScalarProperty Name="JOBHOURS" ColumnName="JOBHOURS" />
+                <ScalarProperty Name="ADDHOURS" ColumnName="ADDHOURS" />
+                <ScalarProperty Name="OFFHOURS" ColumnName="OFFHOURS" />
+                <ScalarProperty Name="WorkDays" ColumnName="WorkDays" />
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="RosterAmt" ColumnName="RosterAmt" />
+                <ScalarProperty Name="CarAllowAmt" ColumnName="CarAllowAmt" />
+                <ScalarProperty Name="MealAllowAmt" ColumnName="MealAllowAmt" />
+                <ScalarProperty Name="PayYYYYMM" ColumnName="PayYYYYMM" />
+                <ScalarProperty Name="WorkDateEnd" ColumnName="WorkDateEnd" />
+                <ScalarProperty Name="H_TYPE" ColumnName="H_TYPE" />
+                <ScalarProperty Name="LEAVECD" ColumnName="LEAVECD" />
+                <ScalarProperty Name="SYSTEMDATE" ColumnName="SYSTEMDATE" />
+                <ScalarProperty Name="SYSTEMTIME" ColumnName="SYSTEMTIME" />
+                <ScalarProperty Name="LOGINUSER" ColumnName="LOGINUSER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEE">
+            <EntityTypeMapping TypeName="TESTHRISModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="COMPANYCD" ColumnName="COMPANYCD" />
+                <ScalarProperty Name="EMPLOYECD" ColumnName="EMPLOYECD" />
+                <ScalarProperty Name="DEPARTCD" ColumnName="DEPARTCD" />
+                <ScalarProperty Name="UNITCD" ColumnName="UNITCD" />
+                <ScalarProperty Name="COSTTYPE" ColumnName="COSTTYPE" />
+                <ScalarProperty Name="HIRETYPE" ColumnName="HIRETYPE" />
+                <ScalarProperty Name="CHINESENAME" ColumnName="CHINESENAME" />
+                <ScalarProperty Name="ENGLISHNAME" ColumnName="ENGLISHNAME" />
+                <ScalarProperty Name="TITLECD" ColumnName="TITLECD" />
+                <ScalarProperty Name="TITLEGD" ColumnName="TITLEGD" />
+                <ScalarProperty Name="JOBFAMILY" ColumnName="JOBFAMILY" />
+                <ScalarProperty Name="TECHCD" ColumnName="TECHCD" />
+                <ScalarProperty Name="INCOMECD" ColumnName="INCOMECD" />
+                <ScalarProperty Name="PASSYN" ColumnName="PASSYN" />
+                <ScalarProperty Name="EDUCATEGD" ColumnName="EDUCATEGD" />
+                <ScalarProperty Name="GRADSCHOOL" ColumnName="GRADSCHOOL" />
+                <ScalarProperty Name="GRADDEPART" ColumnName="GRADDEPART" />
+                <ScalarProperty Name="GRADYEAR" ColumnName="GRADYEAR" />
+                <ScalarProperty Name="WORKPLACE" ColumnName="WORKPLACE" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="NATIONCD" ColumnName="NATIONCD" />
+                <ScalarProperty Name="LICENSECD" ColumnName="LICENSECD" />
+                <ScalarProperty Name="MILITARY" ColumnName="MILITARY" />
+                <ScalarProperty Name="CARDNO" ColumnName="CARDNO" />
+                <ScalarProperty Name="SEXTYPE" ColumnName="SEXTYPE" />
+                <ScalarProperty Name="BLOODTYPE" ColumnName="BLOODTYPE" />
+                <ScalarProperty Name="IDNUMBER" ColumnName="IDNUMBER" />
+                <ScalarProperty Name="IDCHECK" ColumnName="IDCHECK" />
+                <ScalarProperty Name="MARRIAGE" ColumnName="MARRIAGE" />
+                <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+                <ScalarProperty Name="PASSPORT" ColumnName="PASSPORT" />
+                <ScalarProperty Name="URGENTTO" ColumnName="URGENTTO" />
+                <ScalarProperty Name="URGENTTELNO" ColumnName="URGENTTELNO" />
+                <ScalarProperty Name="RELATIONSHIP" ColumnName="RELATIONSHIP" />
+                <ScalarProperty Name="HOMEADDRESS" ColumnName="HOMEADDRESS" />
+                <ScalarProperty Name="TEMPADDRESS" ColumnName="TEMPADDRESS" />
+                <ScalarProperty Name="HOMETELNO" ColumnName="HOMETELNO" />
+                <ScalarProperty Name="TEMPTELNO" ColumnName="TEMPTELNO" />
+                <ScalarProperty Name="CELLULARNO" ColumnName="CELLULARNO" />
+                <ScalarProperty Name="BIBICALL" ColumnName="BIBICALL" />
+                <ScalarProperty Name="BANKACCOUNT" ColumnName="BANKACCOUNT" />
+                <ScalarProperty Name="TAXMANS" ColumnName="TAXMANS" />
+                <ScalarProperty Name="HEALTHMANS" ColumnName="HEALTHMANS" />
+                <ScalarProperty Name="LABORDATE" ColumnName="LABORDATE" />
+                <ScalarProperty Name="LABORAMOUNT" ColumnName="LABORAMOUNT" />
+                <ScalarProperty Name="HEALTHDATE" ColumnName="HEALTHDATE" />
+                <ScalarProperty Name="HEALTHAMOUNT" ColumnName="HEALTHAMOUNT" />
+                <ScalarProperty Name="GROUPYN" ColumnName="GROUPYN" />
+                <ScalarProperty Name="ACCIDENTYN" ColumnName="ACCIDENTYN" />
+                <ScalarProperty Name="MOTORHLYN" ColumnName="MOTORHLYN" />
+                <ScalarProperty Name="CARYN" ColumnName="CARYN" />
+                <ScalarProperty Name="MOTORMM" ColumnName="MOTORMM" />
+                <ScalarProperty Name="CARMM" ColumnName="CARMM" />
+                <ScalarProperty Name="OTHERINSYN" ColumnName="OTHERINSYN" />
+                <ScalarProperty Name="OTHERDEDYN" ColumnName="OTHERDEDYN" />
+                <ScalarProperty Name="ADDYN" ColumnName="ADDYN" />
+                <ScalarProperty Name="OFFYN" ColumnName="OFFYN" />
+                <ScalarProperty Name="BASICPAY" ColumnName="BASICPAY" />
+                <ScalarProperty Name="JOBSTATUS" ColumnName="JOBSTATUS" />
+                <ScalarProperty Name="FULLMONTH" ColumnName="FULLMONTH" />
+                <ScalarProperty Name="FULLTYPE" ColumnName="FULLTYPE" />
+                <ScalarProperty Name="HIREDATE" ColumnName="HIREDATE" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="QUITDATE" ColumnName="QUITDATE" />
+                <ScalarProperty Name="REHIREDATE" ColumnName="REHIREDATE" />
+                <ScalarProperty Name="OFFJOBBEG" ColumnName="OFFJOBBEG" />
+                <ScalarProperty Name="OFFJOBEND" ColumnName="OFFJOBEND" />
+                <ScalarProperty Name="MEALYN" ColumnName="MEALYN" />
+                <ScalarProperty Name="BODYSTATUS" ColumnName="BODYSTATUS" />
+                <ScalarProperty Name="MAXADDPAY" ColumnName="MAXADDPAY" />
+                <ScalarProperty Name="WORKHOURS" ColumnName="WORKHOURS" />
+                <ScalarProperty Name="INHOUSEDAYS" ColumnName="INHOUSEDAYS" />
+                <ScalarProperty Name="QUITDAYS" ColumnName="QUITDAYS" />
+                <ScalarProperty Name="OUTDOORDAYS" ColumnName="OUTDOORDAYS" />
+                <ScalarProperty Name="ADDDAYS" ColumnName="ADDDAYS" />
+                <ScalarProperty Name="RECREATEDAYS" ColumnName="RECREATEDAYS" />
+                <ScalarProperty Name="INCREASEDAYS" ColumnName="INCREASEDAYS" />
+                <ScalarProperty Name="USEDDAYS" ColumnName="USEDDAYS" />
+                <ScalarProperty Name="REGIONCD" ColumnName="REGIONCD" />
+                <ScalarProperty Name="LASTFMONTH" ColumnName="LASTFMONTH" />
+                <ScalarProperty Name="UNUSEDDAYS" ColumnName="UNUSEDDAYS" />
+                <ScalarProperty Name="CUTOFFDATE" ColumnName="CUTOFFDATE" />
+                <ScalarProperty Name="POSTYN" ColumnName="POSTYN" />
+                <ScalarProperty Name="ADDOFFHOURS" ColumnName="ADDOFFHOURS" />
+                <ScalarProperty Name="BANKCD" ColumnName="BANKCD" />
+                <ScalarProperty Name="DEPARTCDOLD" ColumnName="DEPARTCDOLD" />
+                <ScalarProperty Name="UNITCDOLD" ColumnName="UNITCDOLD" />
+                <ScalarProperty Name="REGIONCDOLD" ColumnName="REGIONCDOLD" />
+                <ScalarProperty Name="GROUPCD" ColumnName="GROUPCD" />
+                <ScalarProperty Name="EMAILADDRESS" ColumnName="EMAILADDRESS" />
+                <ScalarProperty Name="SEQUENTIALNO" ColumnName="SEQUENTIALNO" />
+                <ScalarProperty Name="ENDLABORDATE" ColumnName="ENDLABORDATE" />
+                <ScalarProperty Name="ENDHEALTHDATE" ColumnName="ENDHEALTHDATE" />
+                <ScalarProperty Name="UPGRADEDATE" ColumnName="UPGRADEDATE" />
+                <ScalarProperty Name="LASTYEARDAYS" ColumnName="LASTYEARDAYS" />
+                <ScalarProperty Name="WORKRATEC1" ColumnName="WORKRATEC1" />
+                <ScalarProperty Name="WORKRATEM1" ColumnName="WORKRATEM1" />
+                <ScalarProperty Name="WORKRATEC2" ColumnName="WORKRATEC2" />
+                <ScalarProperty Name="WORKRATEM2" ColumnName="WORKRATEM2" />
+                <ScalarProperty Name="WORKRATEC3" ColumnName="WORKRATEC3" />
+                <ScalarProperty Name="WORKRATEM3" ColumnName="WORKRATEM3" />
+                <ScalarProperty Name="WORKRATEC4" ColumnName="WORKRATEC4" />
+                <ScalarProperty Name="WORKRATEM4" ColumnName="WORKRATEM4" />
+                <ScalarProperty Name="RESTTYPE" ColumnName="RESTTYPE" />
+                <ScalarProperty Name="DIRECTBOSS" ColumnName="DIRECTBOSS" />
+                <ScalarProperty Name="WORKRATEC5" ColumnName="WORKRATEC5" />
+                <ScalarProperty Name="WORKRATEM5" ColumnName="WORKRATEM5" />
+                <ScalarProperty Name="OFFWRATEC1" ColumnName="OFFWRATEC1" />
+                <ScalarProperty Name="OFFWRATEM1" ColumnName="OFFWRATEM1" />
+                <ScalarProperty Name="OFFWRATEC2" ColumnName="OFFWRATEC2" />
+                <ScalarProperty Name="OFFWRATEM2" ColumnName="OFFWRATEM2" />
+                <ScalarProperty Name="OFFWRATEC3" ColumnName="OFFWRATEC3" />
+                <ScalarProperty Name="OFFWRATEM3" ColumnName="OFFWRATEM3" />
+                <ScalarProperty Name="GroupMans" ColumnName="GroupMans" />
+                <ScalarProperty Name="BANKCD2" ColumnName="BANKCD2" />
+                <ScalarProperty Name="CardYN" ColumnName="CardYN" />
+                <ScalarProperty Name="ToYouWish" ColumnName="ToYouWish" />
+                <ScalarProperty Name="BANKACCOUNT2" ColumnName="BANKACCOUNT2" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="ISBoss" ColumnName="ISBoss" />
+                <ScalarProperty Name="BossLevel" ColumnName="BossLevel" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="SendMail" ColumnName="SendMail" />
+                <ScalarProperty Name="JoinNewDate" ColumnName="JoinNewDate" />
+                <ScalarProperty Name="QuitNewDate" ColumnName="QuitNewDate" />
+                <ScalarProperty Name="FundAccrueYn" ColumnName="FundAccrueYn" />
+                <ScalarProperty Name="FundBase" ColumnName="FundBase" />
+                <ScalarProperty Name="FundRateEmp" ColumnName="FundRateEmp" />
+                <ScalarProperty Name="FundRateCmp" ColumnName="FundRateCmp" />
+                <ScalarProperty Name="PayOffWork1" ColumnName="PayOffWork1" />
+                <ScalarProperty Name="PayOffWork2" ColumnName="PayOffWork2" />
+                <ScalarProperty Name="FundType" ColumnName="FundType" />
+                <ScalarProperty Name="ResidenceNo" ColumnName="ResidenceNo" />
+                <ScalarProperty Name="TaxNo" ColumnName="TaxNo" />
+                <ScalarProperty Name="BankIDNo" ColumnName="BankIDNo" />
+                <ScalarProperty Name="ComeInDate" ColumnName="ComeInDate" />
+                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+                <ScalarProperty Name="taxrate" ColumnName="taxrate" />
+                <ScalarProperty Name="NHINS2YN" ColumnName="NHINS2YN" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="ObliUp" ColumnName="ObliUp" />
+                <ScalarProperty Name="ObliDn" ColumnName="ObliDn" />
+                <ScalarProperty Name="INCENTIVERATE" ColumnName="INCENTIVERATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WORKTIME">
+            <EntityTypeMapping TypeName="TESTHRISModel.WORKTIME">
+              <MappingFragment StoreEntitySet="WORKTIME">
+                <ScalarProperty Name="COMPANYCD" ColumnName="COMPANYCD" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="WORKONSAT" ColumnName="WORKONSAT" />
+                <ScalarProperty Name="MORNINGTIME" ColumnName="MORNINGTIME" />
+                <ScalarProperty Name="MAXMORNINGTIME" ColumnName="MAXMORNINGTIME" />
+                <ScalarProperty Name="NEXTDAYYN" ColumnName="NEXTDAYYN" />
+                <ScalarProperty Name="OFFWORKTIME" ColumnName="OFFWORKTIME" />
+                <ScalarProperty Name="DELAYTIME" ColumnName="DELAYTIME" />
+                <ScalarProperty Name="DELAYHOUR" ColumnName="DELAYHOUR" />
+                <ScalarProperty Name="NOONTIME" ColumnName="NOONTIME" />
+                <ScalarProperty Name="NOONHOUR" ColumnName="NOONHOUR" />
+                <ScalarProperty Name="ADDWORKTIME" ColumnName="ADDWORKTIME" />
+                <ScalarProperty Name="OVERWORKTIME" ColumnName="OVERWORKTIME" />
+                <ScalarProperty Name="afternoontime" ColumnName="afternoontime" />
+                <ScalarProperty Name="finalofftime" ColumnName="finalofftime" />
+                <ScalarProperty Name="WORKHOURSM" ColumnName="WORKHOURSM" />
+                <ScalarProperty Name="WORKHOURSD" ColumnName="WORKHOURSD" />
+                <ScalarProperty Name="RECORDTIMES" ColumnName="RECORDTIMES" />
+                <ScalarProperty Name="ROSTERAMT" ColumnName="ROSTERAMT" />
+                <ScalarProperty Name="RosterHrs" ColumnName="RosterHrs" />
+                <ScalarProperty Name="NoonTime2" ColumnName="NoonTime2" />
+                <ScalarProperty Name="NoonHour2" ColumnName="NoonHour2" />
+                <ScalarProperty Name="NoonTime3" ColumnName="NoonTime3" />
+                <ScalarProperty Name="NoonHour3" ColumnName="NoonHour3" />
+                <ScalarProperty Name="NoonTime4" ColumnName="NoonTime4" />
+                <ScalarProperty Name="NoonHour4" ColumnName="NoonHour4" />
+                <ScalarProperty Name="NoonTime5" ColumnName="NoonTime5" />
+                <ScalarProperty Name="NoonHour5" ColumnName="NoonHour5" />
+                <ScalarProperty Name="SysAuto" ColumnName="SysAuto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAILYOFF">
+            <EntityTypeMapping TypeName="TESTHRISModel.DAILYOFF">
+              <MappingFragment StoreEntitySet="DAILYOFF">
+                <ScalarProperty Name="SYSTEMDATE" ColumnName="SYSTEMDATE" />
+                <ScalarProperty Name="SYSTEMTIME" ColumnName="SYSTEMTIME" />
+                <ScalarProperty Name="COMPANYCD" ColumnName="COMPANYCD" />
+                <ScalarProperty Name="EMPLOYECD" ColumnName="EMPLOYECD" />
+                <ScalarProperty Name="LOGINUSER" ColumnName="LOGINUSER" />
+                <ScalarProperty Name="APPROVEUSER" ColumnName="APPROVEUSER" />
+                <ScalarProperty Name="APPROVEYN" ColumnName="APPROVEYN" />
+                <ScalarProperty Name="PAYYYYYMM" ColumnName="PAYYYYYMM" />
+                <ScalarProperty Name="DUTYDATE" ColumnName="DUTYDATE" />
+                <ScalarProperty Name="BEGINTIME" ColumnName="BEGINTIME" />
+                <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+                <ScalarProperty Name="OFFWORK1" ColumnName="OFFWORK1" />
+                <ScalarProperty Name="OFFWORK2" ColumnName="OFFWORK2" />
+                <ScalarProperty Name="OFFWORK3" ColumnName="OFFWORK3" />
+                <ScalarProperty Name="OFFWORK4" ColumnName="OFFWORK4" />
+                <ScalarProperty Name="OFFWORK5" ColumnName="OFFWORK5" />
+                <ScalarProperty Name="OFFWORK6" ColumnName="OFFWORK6" />
+                <ScalarProperty Name="OFFWORK7" ColumnName="OFFWORK7" />
+                <ScalarProperty Name="OFFWORK8" ColumnName="OFFWORK8" />
+                <ScalarProperty Name="OFFWORK9" ColumnName="OFFWORK9" />
+                <ScalarProperty Name="OFFWORK10" ColumnName="OFFWORK10" />
+                <ScalarProperty Name="OFFWORK11" ColumnName="OFFWORK11" />
+                <ScalarProperty Name="OFFWORK12" ColumnName="OFFWORK12" />
+                <ScalarProperty Name="OFFWORKHOURS" ColumnName="OFFWORKHOURS" />
+                <ScalarProperty Name="OFFWORK5M" ColumnName="OFFWORK5M" />
+                <ScalarProperty Name="OFFWORK6M" ColumnName="OFFWORK6M" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="SEQNOX" ColumnName="SEQNOX" />
+                <ScalarProperty Name="POSTEDYN" ColumnName="POSTEDYN" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="RESTYN" ColumnName="RESTYN" />
+                <ScalarProperty Name="RECREATEHOURS" ColumnName="RECREATEHOURS" />
+                <ScalarProperty Name="CHANGEDATE" ColumnName="CHANGEDATE" />
+                <ScalarProperty Name="RECREATEDAYS" ColumnName="RECREATEDAYS" />
+                <ScalarProperty Name="OFFHOURS" ColumnName="OFFHOURS" />
+                <ScalarProperty Name="LeaveTimeBeg" ColumnName="LeaveTimeBeg" />
+                <ScalarProperty Name="LeaveTimeEnd" ColumnName="LeaveTimeEnd" />
+                <ScalarProperty Name="OffWork14" ColumnName="OffWork14" />
+                <ScalarProperty Name="OffWork15" ColumnName="OffWork15" />
+                <ScalarProperty Name="FORMID" ColumnName="FORMID" />
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="OFFWORK16" ColumnName="OFFWORK16" />
+                <ScalarProperty Name="OFFWORK17" ColumnName="OFFWORK17" />
+                <ScalarProperty Name="OFFWORK18" ColumnName="OFFWORK18" />
+                <ScalarProperty Name="OFFWORK19" ColumnName="OFFWORK19" />
+                <ScalarProperty Name="CodeIndex" ColumnName="CodeIndex" />
+                <ScalarProperty Name="DorH" ColumnName="DorH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAILYON">
+            <EntityTypeMapping TypeName="TESTHRISModel.DAILYON">
+              <MappingFragment StoreEntitySet="DAILYON">
+                <ScalarProperty Name="SYSTEMDATE" ColumnName="SYSTEMDATE" />
+                <ScalarProperty Name="SYSTEMTIME" ColumnName="SYSTEMTIME" />
+                <ScalarProperty Name="COMPANYCD" ColumnName="COMPANYCD" />
+                <ScalarProperty Name="EMPLOYECD" ColumnName="EMPLOYECD" />
+                <ScalarProperty Name="LOGINUSER" ColumnName="LOGINUSER" />
+                <ScalarProperty Name="APPROVEUSER" ColumnName="APPROVEUSER" />
+                <ScalarProperty Name="APPROVEYN" ColumnName="APPROVEYN" />
+                <ScalarProperty Name="PAYYYYYMM" ColumnName="PAYYYYYMM" />
+                <ScalarProperty Name="DUTYDATE" ColumnName="DUTYDATE" />
+                <ScalarProperty Name="BEGINTIME" ColumnName="BEGINTIME" />
+                <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+                <ScalarProperty Name="OVERONWORK" ColumnName="OVERONWORK" />
+                <ScalarProperty Name="OVEROFFWORK" ColumnName="OVEROFFWORK" />
+                <ScalarProperty Name="OVERWORK1" ColumnName="OVERWORK1" />
+                <ScalarProperty Name="OVERWORK2" ColumnName="OVERWORK2" />
+                <ScalarProperty Name="OVERWORK3" ColumnName="OVERWORK3" />
+                <ScalarProperty Name="OVERWORK4" ColumnName="OVERWORK4" />
+                <ScalarProperty Name="OVERWORK5" ColumnName="OVERWORK5" />
+                <ScalarProperty Name="OVERWORKHOURS" ColumnName="OVERWORKHOURS" />
+                <ScalarProperty Name="WORKHOURS" ColumnName="WORKHOURS" />
+                <ScalarProperty Name="WORKDAYS" ColumnName="WORKDAYS" />
+                <ScalarProperty Name="HOLIDAY" ColumnName="HOLIDAY" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="SEQNOX" ColumnName="SEQNOX" />
+                <ScalarProperty Name="POSTEDYN" ColumnName="POSTEDYN" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="RESTYN" ColumnName="RESTYN" />
+                <ScalarProperty Name="ADDHOURS" ColumnName="ADDHOURS" />
+                <ScalarProperty Name="CHANGEDATE" ColumnName="CHANGEDATE" />
+                <ScalarProperty Name="MEALDELAY" ColumnName="MEALDELAY" />
+                <ScalarProperty Name="UnitCd" ColumnName="UnitCd" />
+                <ScalarProperty Name="CostCd" ColumnName="CostCd" />
+                <ScalarProperty Name="FixedPay18" ColumnName="FixedPay18" />
+                <ScalarProperty Name="FixedPay19" ColumnName="FixedPay19" />
+                <ScalarProperty Name="FixedPay20" ColumnName="FixedPay20" />
+                <ScalarProperty Name="FixedPay21" ColumnName="FixedPay21" />
+                <ScalarProperty Name="FixedPay22" ColumnName="FixedPay22" />
+                <ScalarProperty Name="OffHours" ColumnName="OffHours" />
+                <ScalarProperty Name="LOffDate" ColumnName="LOffDate" />
+                <ScalarProperty Name="MEALDELAY2" ColumnName="MEALDELAY2" />
+                <ScalarProperty Name="FORMID" ColumnName="FORMID" />
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="H_TYPE" ColumnName="H_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAILYONOFF">
+            <EntityTypeMapping TypeName="TESTHRISModel.DAILYONOFF">
+              <MappingFragment StoreEntitySet="DAILYONOFF">
+                <ScalarProperty Name="H_TYPE" ColumnName="H_TYPE" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="OFFWORK19" ColumnName="OFFWORK19" />
+                <ScalarProperty Name="OFFWORK18" ColumnName="OFFWORK18" />
+                <ScalarProperty Name="OFFWORK17" ColumnName="OFFWORK17" />
+                <ScalarProperty Name="OFFWORK16" ColumnName="OFFWORK16" />
+                <ScalarProperty Name="OffWork15" ColumnName="OffWork15" />
+                <ScalarProperty Name="OffWork14" ColumnName="OffWork14" />
+                <ScalarProperty Name="RealOffDate" ColumnName="RealOffDate" />
+                <ScalarProperty Name="RealOnDate" ColumnName="RealOnDate" />
+                <ScalarProperty Name="COSTCD" ColumnName="COSTCD" />
+                <ScalarProperty Name="UNITCD" ColumnName="UNITCD" />
+                <ScalarProperty Name="FixedPay22" ColumnName="FixedPay22" />
+                <ScalarProperty Name="FixedPay21" ColumnName="FixedPay21" />
+                <ScalarProperty Name="FixedPay20" ColumnName="FixedPay20" />
+                <ScalarProperty Name="FixedPay19" ColumnName="FixedPay19" />
+                <ScalarProperty Name="FixedPay18" ColumnName="FixedPay18" />
+                <ScalarProperty Name="LeaveTimeEnd" ColumnName="LeaveTimeEnd" />
+                <ScalarProperty Name="LeaveTimeBeg" ColumnName="LeaveTimeBeg" />
+                <ScalarProperty Name="RemarkOff" ColumnName="RemarkOff" />
+                <ScalarProperty Name="RemarkOn" ColumnName="RemarkOn" />
+                <ScalarProperty Name="LOSTTIMES" ColumnName="LOSTTIMES" />
+                <ScalarProperty Name="BreakOff" ColumnName="BreakOff" />
+                <ScalarProperty Name="BreakOn" ColumnName="BreakOn" />
+                <ScalarProperty Name="RESTYN" ColumnName="RESTYN" />
+                <ScalarProperty Name="MARK" ColumnName="MARK" />
+                <ScalarProperty Name="NEXTDAYYN" ColumnName="NEXTDAYYN" />
+                <ScalarProperty Name="TAXHOURS" ColumnName="TAXHOURS" />
+                <ScalarProperty Name="OFFWORKHOURS" ColumnName="OFFWORKHOURS" />
+                <ScalarProperty Name="OFFWORK12" ColumnName="OFFWORK12" />
+                <ScalarProperty Name="OFFWORK11" ColumnName="OFFWORK11" />
+                <ScalarProperty Name="MEALDELAY" ColumnName="MEALDELAY" />
+                <ScalarProperty Name="OVERWORKHOURS" ColumnName="OVERWORKHOURS" />
+                <ScalarProperty Name="ADDHOURS" ColumnName="ADDHOURS" />
+                <ScalarProperty Name="OFFHOURS" ColumnName="OFFHOURS" />
+                <ScalarProperty Name="HOLIDAY" ColumnName="HOLIDAY" />
+                <ScalarProperty Name="WORKTYPE" ColumnName="WORKTYPE" />
+                <ScalarProperty Name="ERRORYN" ColumnName="ERRORYN" />
+                <ScalarProperty Name="OFFWORK6M" ColumnName="OFFWORK6M" />
+                <ScalarProperty Name="OFFWORK5M" ColumnName="OFFWORK5M" />
+                <ScalarProperty Name="OVEROFFWORK" ColumnName="OVEROFFWORK" />
+                <ScalarProperty Name="OVERONWORK" ColumnName="OVERONWORK" />
+                <ScalarProperty Name="OFFWORK10" ColumnName="OFFWORK10" />
+                <ScalarProperty Name="OFFWORK9" ColumnName="OFFWORK9" />
+                <ScalarProperty Name="OFFWORK8" ColumnName="OFFWORK8" />
+                <ScalarProperty Name="OFFWORK7" ColumnName="OFFWORK7" />
+                <ScalarProperty Name="OFFWORK6" ColumnName="OFFWORK6" />
+                <ScalarProperty Name="OFFWORK5" ColumnName="OFFWORK5" />
+                <ScalarProperty Name="OFFWORK4" ColumnName="OFFWORK4" />
+                <ScalarProperty Name="OFFWORK3" ColumnName="OFFWORK3" />
+                <ScalarProperty Name="OFFWORK2" ColumnName="OFFWORK2" />
+                <ScalarProperty Name="OFFWORK1" ColumnName="OFFWORK1" />
+                <ScalarProperty Name="WORKDAYS" ColumnName="WORKDAYS" />
+                <ScalarProperty Name="WORKHOURS" ColumnName="WORKHOURS" />
+                <ScalarProperty Name="RECREATEDAYS" ColumnName="RECREATEDAYS" />
+                <ScalarProperty Name="OVERWORK5" ColumnName="OVERWORK5" />
+                <ScalarProperty Name="OVERWORK4" ColumnName="OVERWORK4" />
+                <ScalarProperty Name="OVERWORK3" ColumnName="OVERWORK3" />
+                <ScalarProperty Name="OVERWORK2" ColumnName="OVERWORK2" />
+                <ScalarProperty Name="OVERWORK1" ColumnName="OVERWORK1" />
+                <ScalarProperty Name="PAYYYYYMM" ColumnName="PAYYYYYMM" />
+                <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+                <ScalarProperty Name="BEGINTIME" ColumnName="BEGINTIME" />
+                <ScalarProperty Name="SEQNOX" ColumnName="SEQNOX" />
+                <ScalarProperty Name="DUTYDATE" ColumnName="DUTYDATE" />
+                <ScalarProperty Name="POSTEDYN" ColumnName="POSTEDYN" />
+                <ScalarProperty Name="APPROVEYN" ColumnName="APPROVEYN" />
+                <ScalarProperty Name="APPROVEUSER" ColumnName="APPROVEUSER" />
+                <ScalarProperty Name="LOGINUSER" ColumnName="LOGINUSER" />
+                <ScalarProperty Name="EMPLOYECD" ColumnName="EMPLOYECD" />
+                <ScalarProperty Name="COMPANYCD" ColumnName="COMPANYCD" />
+                <ScalarProperty Name="SYSTEMTIME" ColumnName="SYSTEMTIME" />
+                <ScalarProperty Name="SYSTEMDATE" ColumnName="SYSTEMDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOSTCARD">
+            <EntityTypeMapping TypeName="TESTHRISModel.LOSTCARD">
+              <MappingFragment StoreEntitySet="LOSTCARD">
+                <ScalarProperty Name="Sequenceid" ColumnName="Sequenceid" />
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="CARDTYPE" ColumnName="CARDTYPE" />
+                <ScalarProperty Name="CARDTIME" ColumnName="CARDTIME" />
+                <ScalarProperty Name="CARDDATE" ColumnName="CARDDATE" />
+                <ScalarProperty Name="CARDNO" ColumnName="CARDNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

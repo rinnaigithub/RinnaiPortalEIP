@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly", "Assembly", "{E374CD07-0B90-4373-9888-DC05273987A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemberAuth", "Assembly\MemberAuth\MemberAuth.csproj", "{8C8B9197-A57F-4ADB-AD98-D465F0377D34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{6163B15D-092C-4785-A7A5-B233C04CC58F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "App\Portal\Portal.csproj", "{B98AFFCC-9EB7-45BC-9B2B-73F532B34DDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rinnai.DataBase", "Rinnai.DataBase", "{2C7C6B58-A562-47B8-ADBE-103BD6D7F23F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalDataEntities", "Assembly\Rinnai.Database\PortalDataEntities\PortalDataEntities.csproj", "{7DEB1D19-B779-45A2-B647-D148600A1E41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartManDataEntities", "Assembly\Rinnai.Database\SmartManDataEntities\SmartManDataEntities.csproj", "{0D9CF19A-6836-48AE-91F8-2C46D104E4E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C8B9197-A57F-4ADB-AD98-D465F0377D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C8B9197-A57F-4ADB-AD98-D465F0377D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C8B9197-A57F-4ADB-AD98-D465F0377D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C8B9197-A57F-4ADB-AD98-D465F0377D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B98AFFCC-9EB7-45BC-9B2B-73F532B34DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B98AFFCC-9EB7-45BC-9B2B-73F532B34DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B98AFFCC-9EB7-45BC-9B2B-73F532B34DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B98AFFCC-9EB7-45BC-9B2B-73F532B34DDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEB1D19-B779-45A2-B647-D148600A1E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEB1D19-B779-45A2-B647-D148600A1E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEB1D19-B779-45A2-B647-D148600A1E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEB1D19-B779-45A2-B647-D148600A1E41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9CF19A-6836-48AE-91F8-2C46D104E4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9CF19A-6836-48AE-91F8-2C46D104E4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9CF19A-6836-48AE-91F8-2C46D104E4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9CF19A-6836-48AE-91F8-2C46D104E4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C8B9197-A57F-4ADB-AD98-D465F0377D34} = {E374CD07-0B90-4373-9888-DC05273987A6}
+		{2C7C6B58-A562-47B8-ADBE-103BD6D7F23F} = {E374CD07-0B90-4373-9888-DC05273987A6}
+		{B98AFFCC-9EB7-45BC-9B2B-73F532B34DDC} = {6163B15D-092C-4785-A7A5-B233C04CC58F}
+		{7DEB1D19-B779-45A2-B647-D148600A1E41} = {2C7C6B58-A562-47B8-ADBE-103BD6D7F23F}
+		{0D9CF19A-6836-48AE-91F8-2C46D104E4E3} = {2C7C6B58-A562-47B8-ADBE-103BD6D7F23F}
+	EndGlobalSection
+EndGlobal

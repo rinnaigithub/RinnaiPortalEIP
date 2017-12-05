@@ -1,0 +1,69 @@
+﻿@using Portal.Models.MenuModels.MenuListModels
+@model MenuListViewModel
+
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    #menuTable > tbody > tr > td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .gradeX > td:nth-child(1) {
+        width: 15%;
+    }
+</style>
+<div class="row-fluid">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"> <i class="icon-align-justify"></i> </span>
+            <h5>根目錄列表</h5>
+        </div>
+        <div class="widget-content">
+            <div class="control-group">
+                <form>
+                    <div class="controls">
+                        <input type="button" id="addMenu" name="addRole" value="建立根目錄" class="btn btn-lg btn-success" onclick="location.href='@Url.Content("~/Menu/MenuAdd")'" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--table start-->
+
+<div class="row-fluid">
+
+    <div class="span12">
+        @{Html.RenderPartial("_MenuTablePartial", Model);}
+    </div>
+</div>
+<!--table end-->
+@section IncludeJS
+{
+    <script>
+        (function ($) {
+            $(function () {
+            });
+
+            function pNotifySuccessAlert(msg) {
+                new PNotify({
+                    title: 'Success',
+                    text: msg,
+                    type: 'success'
+                });
+            }
+
+            function pNotifyErrorAlert(msg) {
+                new PNotify({
+                    title: 'Error',
+                    text: msg,
+                    type: 'error'
+                });
+            }
+
+        })(jQuery);
+    </script>
+}

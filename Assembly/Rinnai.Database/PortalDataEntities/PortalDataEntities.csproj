@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DEB1D19-B779-45A2-B647-D148600A1E41}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PortalDataEntities</RootNamespace>
+    <AssemblyName>PortalDataEntities</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\BbsContent.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Department.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EIPPT.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EIPPT.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EIPPT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EIPPT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EIPPT.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Employee.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ForgotPunchForm.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OvertimeForm.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PeriodType.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PTFunction.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PTMenu.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PTRole.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PTRoleMenuMap.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PTSYSLOGERR.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PTUserRoleMap.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SalaryLimit.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SignAgent.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SignDocCode.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SignForm_Detail.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SignForm_Log.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SignForm_Main.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SignProcedure.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SignType.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SysGroup.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SystemArchitecture.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserPriority.cs">
+      <DependentUpon>EIPPT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Entities\EIPPT.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EIPPT.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\EIPPT.edmx.diagram">
+      <DependentUpon>EIPPT.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\EIPPT.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EIPPT.edmx</DependentUpon>
+      <LastGenOutput>EIPPT.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\EIPPT.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EIPPT.edmx</DependentUpon>
+      <LastGenOutput>EIPPT.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

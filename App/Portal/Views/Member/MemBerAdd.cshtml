@@ -1,0 +1,329 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: white;
+        background-color: #ff6666;
+    }
+
+    .datepicker {
+        top: 130px;
+    }
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-info-sign"></i> </span>
+                <h5>使用者新增</h5>
+            </div>
+            <div class="widget-content nopadding">
+
+                @using (Html.BeginForm("MemberAdd", "Member", FormMethod.Post, new { id = "frmEmpAdd", @class = "form-horizontal", novalidate = "novalidate" }))
+                {
+                    <div class="span6">
+                        <div class="control-group">
+                            <label class="control-label">員工編號</label>
+                            <div class="controls">
+                                <input type="text" name="EmpID" id="EmpID">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">AD帳號</label>
+                            <div class="controls">
+                                <input type="text" name="ADAccount" id="ADAccount">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">員工姓名</label>
+                            <div class="controls">
+                                <input type="text" name="EmpName" id="EmpName">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">國籍</label>
+                            <div class="controls">
+                                <select id="nationality" name="Nationality">
+                                    <option value="TAIWAN">台灣</option>
+                                    <option value="JAPAN">日本</option>
+                                    <option value="VIETNAM">越南</option>
+                                    <option value="INDONESIA">印尼</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">性別</label>
+                            <div class="controls">
+                                <label>
+                                    <input type="radio" name="Gender" value="M" checked />
+                                    男性
+                                </label>
+                                <label>
+                                    <input type="radio" name="Gender" value="F" />
+                                    女性
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6">
+
+                        <div class="control-group">
+                            <label class="control-label">角色設定</label>
+                            <div class="controls">
+                                <select id="roleList" name="Role" multiple="multiple"></select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">部門名稱</label>
+                            <div class="controls">
+                                <select id="depList" name="DepID"></select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">成本部門</label>
+                            <div class="controls">
+                                <select id="costDepList" name="CostDepID"></select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">狀態</label>
+                            <div class="controls">
+                                <label>
+                                    <input type="radio" name="Disable" value="false" checked />
+                                    啟用
+                                </label>
+                                <label>
+                                    <input type="radio" name="Disable" value="true" />
+                                    停用
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">停用日期</label>
+                            <div class="controls">
+                                <input type="text" name="DisableDate" id="DisableDate" class="datepicker">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <input type="button" id="frmSubmit" value="新增" class="btn btn-success">
+                        <input type="button" id="frmCancel" value="取消" class="btn btn-warning" onclick="location.href='@Url.Content("~/Member/MemberList")'">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section IncludeJS
+{
+    <script>
+        (function ($) {
+            $(function () {
+
+                if ('@ViewBag.AddFail' != '') {
+                    confirmAlert('@ViewBag.AddFail');
+                }
+
+                select2Init();
+                evenInit();
+
+                $('#DisableDate').datepicker(
+                {
+                    format: "yyyy-mm-dd",
+                    autoclose: true,
+                    startDate: "today",
+                    clearBtn: true,
+                    calendarWeeks: true,
+                    todayHighlight: true,
+                    language: 'zh-TW'
+                });
+            })
+
+            function select2Init() {
+
+                $("#EmpID").select2({
+                    placeholder: "請選擇員工",
+                    data: getEmpData().results
+                });
+
+                $("#EmpID").on('change', function () {
+                    var getEmpName = $(this).select2('data')[0].text;
+                    var splitStr = getEmpName.split('-')[1].trim();
+                    $('#EmpName').val(splitStr);
+                });
+
+
+                $("#roleList").select2({
+                    placeholder: "請選擇角色",
+                    data: getRoleData().results
+                });
+
+                $("#nationality").select2({
+                    placeholder: "請選擇國家",
+                });
+
+                $('#depList,#costDepList').select2({
+                    placeholder: "請選擇部門",
+                    data: getDepartmentData().results
+                });
+
+
+
+
+            }
+            function evenInit() {
+                $('#frmSubmit').click(function () {
+                    //員工ID驗證
+                    var empID = $('#EmpID').val();
+                    if (empID == '') {
+                        pNotifyAlert('未選擇員工');
+                        return false;
+                    }
+
+                    if ($("#frmEmpAdd").valid()) {
+                        //角色驗證
+                        var roleListSelect = $('#roleList').val();
+                        if (roleListSelect == null) {
+                            pNotifyAlert('未選擇角色');
+                            return false;
+                        }
+                        //停用日期驗證
+                        var disbaleElemVal = $('input[name=Disable]:checked').val();
+                        if (disbaleElemVal == 'true') {
+                            var disblaeDate = $('#DisableDate').val();
+                            if (disblaeDate == '') {
+                                pNotifyAlert('未輸入停用日期');
+                                return;
+                            }
+                        }
+                        $("#frmEmpAdd")[0].submit();
+                    } else {
+                        return false;
+                    }
+                });
+
+            }
+
+
+            //志元員工檔
+            function getEmpData() {
+                var result;
+                $.ajax({
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    contentType: 'application/json; charset=UTF-8',
+                    url: "@Url.Content("~/api/publicfunction/GetSmartManAllEmployeeDataJson/")",
+                    //data: JSON.stringify(model),
+                    success: function (data) {
+                        result = data;
+                    }, error: function (error) {
+                    }
+                })
+                return result;
+            }
+
+
+            //角色檔
+            function getRoleData() {
+                var result;
+                $.ajax({
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    contentType: 'application/json; charset=UTF-8',
+                    url: "@Url.Content("~/api/publicfunction/GetRoleInformationJson/")",
+                    //data: JSON.stringify(model),
+                    success: function (data) {
+                        result = data;
+                    }, error: function (error) {
+                    }
+                })
+                return result;
+            }
+            //部門檔
+            function getDepartmentData() {
+                var result;
+                $.ajax({
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    contentType: 'application/json; charset=UTF-8',
+                    url: "@Url.Content("~/api/publicfunction/GetDepartmentInformationJson/")",
+                    //data: JSON.stringify(model),
+                    success: function (data) {
+                        result = data;
+                    }, error: function (error) {
+                    }
+                })
+                return result;
+            }
+
+            var validator = $("#frmEmpAdd").validate({
+                rules: {
+                    //EmpID: { required: true },
+                    EmpName: { required: true },
+                    ADAccount: { required: true },
+                },
+                messages: {
+                    //EmpID: { required: "請輸入員工ID" },
+                    EmpName: { required: "請輸入員工姓名" },
+                    ADAccount: { required: "請輸入ADAccount" },
+                },
+                //在Submit之前，且驗證失敗。
+                invalidHandler: function () {
+                },
+                errorClass: "help-inline",
+                errorElement: "span",
+                ////單項證驗失敗，參數是驗證對像
+                highlight: function (element, errorClass, validClass) {
+                    $(element).parents('.control-group').removeClass('success');
+                    $(element).parents('.control-group').addClass('error');
+                    $(element).fadeOut(function () {
+                        $(element).fadeIn();
+                    });
+                },
+                //單項證驗成功，參數是驗證對像
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).parents('.control-group').removeClass('error');
+                    $(element).parents('.control-group').addClass('success');
+                }
+            })
+
+            function confirmAlert(msg) {
+                //return false;
+                $.confirm({
+                    type: 'orange',
+                    typeAnimated: true,
+                    theme: 'supervan',
+                    title: '提醒!',
+                    content: msg,
+                    buttons: {
+                        confirm: {
+                            text: '確定',
+                            action: function () {
+                            }
+                        },
+                    }
+                });
+            }
+
+            function pNotifyAlert(msg) {
+                new PNotify({
+                    title: '資料未填寫完整!!',
+                    text: msg,
+                    type: 'error'
+                });
+            }
+
+        })(jQuery);
+    </script>
+}

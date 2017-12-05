@@ -1,0 +1,142 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <form action="/FileUpload/Index" method="post">
+        <input type="file" id="testF" name="file" value="" />
+        <div style="display: -webkit-box;">
+            單筆
+            <input id="up_s" type='file' onchange="fileUpload(this);" />
+            <div id='output_s'></div>
+
+            多筆
+            <input id="up_m" type='file' multiple onchange="fileUpload(this);" />
+            <div id='output_m'></div>
+
+            <input type="button" id="post" name="name" value="送出表單" />
+        </div>
+    </form>
+    <script>
+        var fileList = [];
+        var form = new FormData();
+
+        $('#post').click(function () {
+            for (var i = 0; i < fileList.length; i++) {
+                var data = fileList[i];
+                if (data.type == 's') {
+                    form.append('image', data.files);
+                }
+                else if (data.type == 'm') {
+                    form.append('images', data.files);
+                }
+            }
+
+                   var url = "@Url.Content("~/FileUpload/Index/")";
+
+            var xhr = new XMLHttpRequest();
+            var data = new FormData();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader("Content-Type", "multipart/form-data");
+            xhr.setRequestHeader("X-File-Name", fileList);
+            xhr.setRequestHeader("X-File-Size", fileList);
+            xhr.setRequestHeader("X-File-Type", fileList);
+
+            //req.setRequestHeader('Content-type', 'multipart/form-data');
+            xhr.send(data);
+
+            @*var url = "@Url.Content("~/FileUpload/Index/")";
+            $.ajax({
+                async: false,
+                type: "POST",
+                url: url,
+                data: form,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                },
+                error: function (error) {
+                    alert("errror");
+                }
+            });*@
+        });
+
+        //刪除
+        $(document).on('click', '.close', function () {
+            var delIndex = [];
+            var id = $(this).closest('span').attr('id');
+            var t = $(this).attr('obj-Type');
+            for (var i = 0; i < fileList.length; i++) {
+                var data = fileList[i];
+                if (data.type == t && data.files.name == id) {
+                    delIndex.push(i);
+                }
+            }
+
+            for (var i = 0; i < delIndex.length; i++) {
+                fileList.splice(delIndex[i], 1);
+            }
+
+            $(this).closest('span').remove();
+            console.log(fileList);
+        });
+        function fileUpload(elem) {
+            var upObj = $(elem).attr('id');
+
+            if (upObj == 'up_s') {
+                for (var i = 0; i < fileList.length; i++) {
+                    var data = fileList[i];
+                    if (data.type == 's') {
+                        fileList.splice(i, 1);
+                    }
+                }
+
+                var f = document.getElementById('up_s');
+                $ap = '<span id="' + f.files[0].name + '">' + f.files[0].name + '<button type="button" class="close" obj-Type="s" >刪</button></span></br>';
+                $('#output_s').empty();
+                $('#output_s').append($ap);
+                fileList.push({ type: 's', files: f.files[0] });
+            }
+            else if (upObj == 'up_m') {
+                var f = document.getElementById('up_m');
+                for (var i = 0; i < f.files.length; i++) {
+                    $ap = '<span id="' + f.files[i].name + '">' + f.files[i].name + '<button type="button" class="close" obj-Type="m" >刪</button></span></br>';
+                    $('#output_m').append($ap);
+                    fileList.push({ type: 'm', files: f.files[i] });
+                }
+            }
+            console.log(fileList);
+
+            //$('#button').click(function () {
+            //    $("input[type='file']").trigger('click');
+            //})
+
+            //var input = event.target.value;
+            //$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
+            //console.log(input.value);
+
+            //var openFile = function (event) {
+            //    console.log(event);
+            //    var input = event.target;
+
+            //    var reader = new FileReader();
+            //    reader.onload = function () {
+            //        var dataURL = reader.result;
+            //        var output = document.getElementById('output');
+            //        output.src = dataURL;
+            //    };
+            //    reader.readAsDataURL(input.files[0]);
+            //};
+        }
+    </script>
+</body>
+</html>

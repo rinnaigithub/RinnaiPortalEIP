@@ -1,0 +1,151 @@
+﻿@using Portal.Models.AccountModels
+@model LogonViewModel
+@{
+    ViewBag.Title = "Logon";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logon</title>
+    @Styles.Render("~/Content/loginCss")
+</head>
+<body>
+    <div id="summary" hidden></div>
+    <div class="wrapper">
+        @using (Html.BeginForm("Logon", "Account", FormMethod.Post, new { id = "frmLogin", @class = "login" }))
+        {
+            @Html.AntiForgeryToken()
+            <!--<img src="Images/rinnailogo5.jpg" />-->
+            <p class="title">Welcome Portal</p>
+            <input type="text" placeholder="請輸入帳號" autofocus name="Account" class="validInput" value="@Model.Account" />
+            <i class="fa fa-user-o"></i>
+            <input type="password" placeholder="請輸入密碼" name="Password" class="validInput" value="@Model.Password" />
+            <i class="fa fa-key"></i>
+            <input type="text" placeholder="請輸入網域名稱" class="validInput" name="DomainName" value="rinnai" />
+            <i class="fa fa-tag"></i>
+            <!--<a href="#">Forgot your password?</a>-->
+            <button id="subBtn">
+                <i class="spinner"></i>
+                <span class="state" id="btnMsg">登入</span>
+            </button>
+        }
+        <footer>
+            <!--<a target="blank" href="http://boudra.me/">boudra.me</a>-->
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/loginJs");
+    <script>
+
+        $(function () {
+
+            $('#subBtn').click(function (e) {
+                var isValid = true;
+                var inputName='';
+
+                $('.validInput').each(function () {
+                    if ($(this).val() == '') {
+                        inputName += $(this).attr('placeholder') + '<br>';
+                        isValid = false;
+                        return;
+                    }
+                });
+                if (isValid) {
+                    submitForm();
+                }
+                else
+                {
+                    ConfirmAlert(inputName);
+                    e.preventDefault();
+                    //$('.login').removeClass().addClass('login');
+                }
+            });
+
+            //驗證失敗
+            if ('@ViewBag.LoginFail' != '') {
+                ConfirmAlert('@ViewBag.LoginFail');
+            }
+
+            //延遲送表單
+            function submitForm() {
+                setTimeout(function () {
+                    $('#frmLogin')[0].submit();
+                }, 3000);
+            }
+
+            //表單送出現出現Loding
+            $('.login').on('submit', function (e) {
+                e.preventDefault();
+                var $this = $(this),
+                  $state = $this.find('button > .state');
+                $this.addClass('loading');
+                $state.html('檢查帳號中');
+            });
+
+            function ConfirmAlert(msg) {
+                //return false;
+                $.confirm({
+                    type: 'orange',
+                    typeAnimated: true,
+                    theme: 'supervan',
+                    title: '提醒!',
+                    content: msg,
+                    buttons: {
+                        confirm: {
+                            text: '確定',
+                            action: function () {
+                            }
+                        },
+                    }
+                });
+            }
+
+            //var validator = $("#frmLogin").validate({
+            //    rules: {
+            //        'Account': { required: true },
+            //        'Password': { required: true },
+            //        'DomainName': { required: true }
+            //    },
+            //    messages: {
+            //        'Account': { required: "請輸入帳號" },
+            //        'Password': { required: "請輸入密碼" },
+            //        'DomainName': { required: "請輸入網域名稱" }
+            //    },
+            //    //在Submit之前，且驗證失敗。
+            //    invalidHandler: function () {
+            //        //$("#summary").fadeOut().fadeIn().addClass('red-font');
+            //        //$('#summary').html("尚有 " + validator.numberOfInvalids() + " 項目未填");
+            //    },
+            //    //單項證驗失敗，參數是驗證對像
+            //    highlight: function (element, errorClass) {
+            //        $(element).fadeOut(function () { $(element).fadeIn(); });
+            //        $(element).css('border-color', 'red')
+            //    },
+            //    //單項證驗成功，參數是驗證對像
+            //    unhighlight: function (element, errorClass) {
+            //        $(element).css('border-color', '');
+            //    },
+            //    //error 元素的加入function
+            //    errorPlacement: function (error, element) {
+            //        element.css('display', 'none')
+            //    },
+            //    //訊息顯示的Callback，名字取得不好，不是發生錯誤才會呼叫，而是只要有事件發生都會被呼叫，包含驗證成功。
+            //    //showErrors: function (errorMap, errorList) {
+            //    ////$("#summary").html("Your form contains " + this.numberOfInvalids() + " errors, see details below.");
+            //    //    if ( this.numberOfInvalids()  > 0) {
+            //    //                $("#summary").html("*共有 "
+            //    //                                 + this.numberOfInvalids()
+            //    //                                 + " 欄位未填").addClass('red-font');
+            //    //                //不呼叫defaultShowErrors其他如highlight,unhighlight等方法是不會被呼叫的
+            //    //                this.defaultShowErrors();
+            //    //            }
+            //    //        }
+            //})
+
+
+        })
+    </script>
+</body>
+</html>

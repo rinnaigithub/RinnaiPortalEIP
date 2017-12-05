@@ -1,0 +1,114 @@
+﻿@using Portal.Models.AccountModels
+@model LogonViewModel
+@{
+    ViewBag.Title = "Logon";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+    <title>Logon</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <style type="text/css">
+        /*如果使用者視窗寬度 <= 480px，將字體大小變為 16px*/
+        @@media screen and (max-width: 480px) {
+            body {
+                font-size: 16px;
+            }
+        }
+
+        /*如果使用者視窗寬度 <= 768px，將字體大小變為 20px*/
+        @@media screen and (max-width: 768px) {
+            body {
+                font-size: 20px;
+            }
+        }
+        /*如果使用者視窗寬度介於 768px ~ 992px，將字體大小變為 30px*/
+        @@media screen and (min-width: 768px) and (max-width: 992px) {
+            body {
+                font-size: 30px;
+            }
+        }
+
+        /*如果使用者視窗寬度介於 768px ~ 992px，將字體大小變為 30px*/
+        @@media screen and (min-width: 992px) and (max-width: 1200px) {
+            body {
+                font-size: 35px;
+            }
+        }
+
+        /*如果使用者視窗寬度 >= 1200px，將字體大小變為 40px*/
+        @@media screen and (min-width: 1200px) {
+            body {
+                font-size: 40px;
+            }
+        }
+
+        /*也可以用 OR，中間用逗號區隔，如下範例 如果使用者視窗寬度 符合視窗大小在600px(含)以下，或800px(含)以上 <= 600px 或者>=800px*/
+        @@media screen and (max-width: 600px), screen and (min-width: 800px) {
+            body {
+                font-size: 40px;
+            }
+        }
+
+        #container {
+            align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="span4 offset4 well">
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-error">
+                        <a class="close" data-dismiss="alert" href="#">×</a>
+                        @Html.ValidationSummary()
+                    </div>
+                }
+
+                @using (Html.BeginForm("Logon", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.TextBoxFor(x => x.Account, new { @class = "span4", placeholder = "帳號", AutoComplete = "Off", tabindex = "1" })
+                    @Html.PasswordFor(x => x.Password, new { @class = "span4", placeholder = "密碼", AutoComplete = "Off", tabindex = "2" })
+                    @Html.TextBoxFor(x => x.DomainName, new { @class = "span4", placeholder = "網域名稱", AutoComplete = "Off", tabindex = "3" })
+
+                    <label>
+                        @Html.CheckBoxFor(x => x.Remember)
+                        @Html.DisplayNameFor(x => x.Remember)
+                    </label>
+
+                    <div style="padding-top: 10px;">
+                        <button type="submit" name="submit" class="btn btn-primary">登入</button>
+                        <button type="button" name="reset" class="btn">清除</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-2.0.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#Account').focus();
+            $('button[name=reset]').click(function () {
+                $('#Account').val('');
+                $('#Password').val('');
+                $('#Remember').prop('checked', '');
+                if ($('.alert>a.close').length > 0) {
+                    $('.alert>a.close').trigger('click');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

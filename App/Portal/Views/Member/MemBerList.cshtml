@@ -1,0 +1,343 @@
+﻿@using Portal.Models.MemberModels.MemberListModels
+@model MemberListViewModel
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+
+    string empID = string.Empty;
+    string Diasble = string.Empty;
+    string Nationality = string.Empty;
+    string Dep = string.Empty;
+    if (ViewBag.FilterCollection != null)
+    {
+        MemberListViewFilterCollectionModel filterCollectionModel = (MemberListViewFilterCollectionModel)ViewBag.FilterCollection;
+        empID = filterCollectionModel.EmpID;
+        Diasble = string.IsNullOrEmpty(filterCollectionModel.Diasble) ? "" : filterCollectionModel.Diasble.ToLower();
+        Nationality = string.IsNullOrEmpty(filterCollectionModel.Nationality) ? "" : filterCollectionModel.Nationality.ToUpper();
+        Dep = string.IsNullOrEmpty(filterCollectionModel.Dep) ? "" : filterCollectionModel.Dep;
+    }
+
+}
+<style>
+    #empTable > tbody > tr > td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .controls-row {
+        display: flex;
+        margin-bottom: 5px;
+    }
+
+    .search-btn {
+        margin-left: 5px !important;
+    }
+
+    .back-red {
+        background-color: #ff6666 !important;
+        color: white;
+    }
+
+</style>
+    <!--filter start-->
+
+<div class="row-fluid">
+    <!--left start-->
+
+    <div class="span6">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-align-justify"></i> </span>
+                <h5>查詢條件</h5>
+            </div>
+            <div class="widget-content">
+                <label>查詢員工</label>
+                <div class="controls controls-row">
+                    <input id="empId" type="text" name="empId" placeholder="請輸入查詢條件 員工編號或姓名" class="span10 m-wrap" value="@empID" />
+                    <input id="empIdBtn" class="btn btn-success span2 m-wrap search-btn" type="button" value="查詢" />
+                </div>
+                <label>查詢狀態</label>
+                <div class="controls controls-row">
+                    <select id="diasble" name="diasble" class="span10 m-wrap select-filter">
+                        <option value="false">啟用</option>
+                        <option value="true">停用</option>
+                    </select>
+                    <input id="diasbleBtn" class="btn btn-success span2 m-wrap search-btn" type="button" value="查詢" />
+                </div>
+                <label>查詢國別</label>
+                <div class="controls controls-row">
+                    <select id="nationality" name="nationality" class="span10 m-wrap select-filter">
+                        <option value="TAIWAN">台灣</option>
+                        <option value="JAPAN">日本</option>
+                        <option value="VIETNAM">越南</option>
+                        <option value="INDONESIA">印尼</option>
+                    </select>
+                    <input id="nationalityBtn" class="btn btn-success span2 m-wrap search-btn" type="button" value="查詢" />
+                </div>
+                <label>查詢部門</label>
+                <div class="controls controls-row">
+                    <select id="dep" name="dep" class="span10 m-wrap select-filter"></select>
+                    <input id="depBtn" class="btn btn-success span2 m-wrap search-btn" type="button" value="查詢" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--left end-->
+
+    <!--right start-->
+
+    <div class="span6">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="icon-ok"></i></span>
+                <h5>Progress Box</h5>
+            </div>
+            <div class="widget-content">
+                <ul class="unstyled">
+                    <li>
+                        <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 81% Clicks <span class="pull-right strong">567</span>
+                        <div class="progress progress-striped ">
+                            <div style="width: 81%;" class="bar"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 72% Uniquie Clicks <span class="pull-right strong">507</span>
+                        <div class="progress progress-success progress-striped ">
+                            <div style="width: 72%;" class="bar"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon24 icomoon-icon-arrow-down-2 red"></span> 53% Impressions <span class="pull-right strong">457</span>
+                        <div class="progress progress-warning progress-striped ">
+                            <div style="width: 53%;" class="bar"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 3% Online Users <span class="pull-right strong">8</span>
+                        <div class="progress progress-danger progress-striped ">
+                            <div style="width: 3%;" class="bar"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--right end-->
+
+    </div>
+
+    <!--filter end-->
+
+    <!--table start-->
+
+    <div class="row-fluid">
+
+                <div class="span12">
+                    <table id="empTable" class="table table-bordered data-table tablesorter">
+                        <thead>
+                            <tr>
+                                <th>管理</th>
+                                <th>員工編號</th>
+                                <th>員工姓名</th>
+                                <th>部門代碼</th>
+                                <th>部門名稱</th>
+                                <th>AD帳號</th>
+                                <th>性別</th>
+                                <th>狀態</th>
+                                <th>國別</th>
+                                <th>建立者</th>
+                                <th>建立日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Result.Data.Count == 0)
+                            {
+                                <tr><td colspan="11"><span style="color:red;">查無資料!</span></td></tr>
+                            }
+                            @foreach (var emp in Model.Result.Data)
+                            {
+                                string disableDesc = string.Empty;
+                                string disableClass = string.Empty;
+
+                                if (emp.Disable)
+                                {
+                                    disableDesc = "停用";
+                                    disableClass = "back-red";
+                                }
+                                else
+                                {
+                                    disableDesc = "啟用";
+                                }
+
+
+                                <tr class="gradeX">
+                                    <td>
+                                        <button class="btn btn-info" type="button" onclick="location.href='@Url.Content("~/Member/MemberEdit?empID=" + emp.EmpID)'">
+                                            <i class="icon-edit"></i>
+                                            <span>編輯</span>
+                                        </button>
+                                    </td>
+                                    <td>@emp.EmpID</td>
+                                    <td>@emp.EmpName</td>
+                                    <td>@emp.DepCode</td>
+                                    <td>@emp.DepName</td>
+                                    <td>@emp.ADAccount</td>
+                                    <td>@emp.GenderDesc</td>
+                                    <td class="@disableClass">@disableDesc</td>
+                                    <td>@emp.NationalityName</td>
+                                    <td>@emp.BuildUserADAccount</td>
+                                    <td>@emp.BuildDateStr</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                    @Html.PagedListPager(Model.Result.Data, page => Url.Action("MemberList",
+                new
+                {
+                    page,
+                    qry = ViewBag.SearchStr,
+                    target = ViewBag.Targer,
+                    sMothMd = Model.Filter.Status
+                }))
+
+                    <div id="pageInfo">
+                        Page @(Model.Result.Data.PageCount < Model.Result.Data.PageNumber ? 0 : Model.Result.Data.PageNumber) of @Model.Result.Data.PageCount
+                        (共 @Model.Result.Data.TotalItemCount 筆)
+                    </div>
+
+                </div>
+        </div>
+
+    <!--table end-->
+
+    @section IncludeJS
+{
+        <script>
+            (function ($) {
+                $(function () {
+                    evenInit();
+                    select2Init();
+
+                    $("#diasble").val('@Diasble').trigger('change');
+                    $("#nationality").val('@Nationality').trigger('change');
+                    $("#dep").val('@Dep').trigger('change');
+
+                    //sort
+                    $("#empTable").tablesorter(
+                        {
+                            headers: {
+                                0: {
+                                    sorter: false
+                                },
+                            },
+                            sortList: [[1, 0]]
+                        });
+                });
+
+                //部門檔
+                function getDepartmentData() {
+                    var result;
+                    $.ajax({
+                        type: "GET",
+                        async: false,
+                        dataType: "json",
+                        contentType: 'application/json; charset=UTF-8',
+                        url: "@Url.Content("~/api/publicfunction/GetDepartmentInformationJson/")",
+                        //data: JSON.stringify(model),
+                        success: function (data) {
+                            result = data;
+                        }, error: function (error) {
+                        }
+                    })
+                    return result;
+                }
+
+                //志元員工檔
+                function getEmpData() {
+                    var result;
+                    $.ajax({
+                        type: "GET",
+                        async: false,
+                        dataType: "json",
+                        contentType: 'application/json; charset=UTF-8',
+                        url: "@Url.Content("~/api/publicfunction/GetSmartManAllEmployeeDataJson/")",
+                        //data: JSON.stringify(model),
+                        success: function (data) {
+                            result = data;
+                        }, error: function (error) {
+                        }
+                    })
+                    return result;
+                }
+
+                function evenInit() {
+                    //送出查詢
+                    $('.search-btn').click(function () {
+                        var filterCol = {};
+                        filterCol.EmpID = $('#empId').val();
+                        filterCol.Diasble = $('#diasble').val();
+                        filterCol.Nationality = $('#nationality').val();
+                        filterCol.Dep = $('#dep').val();
+                        var filterElem = $(this).attr('id');
+                        var formartID = filterElem.replace('Btn', '');
+                        var filterValue = $('#' + formartID).val();
+                        var filterUrl = '@Url.Content("~/Member/MemberList")' + "?target=" + formartID + '&qry=' + filterValue + '&filterCol=' + JSON.stringify(filterCol);
+
+                        if (filterValue === null) {
+                            var empSpan;
+                            switch (formartID) {
+                                case 'diasble':
+                                    empSpan = $('#select2-diasble-container > span').html();
+                                    break;
+                                case 'nationality':
+                                    empSpan = $('#select2-nationality-container > span').html();
+                                    break;
+                                case 'dep':
+                                    empSpan = $('#select2-dep-container > span').html();
+                                    break;
+                                default:
+                            }
+                            pNotifyErrorAlert(empSpan);
+                            return;
+                        }
+
+                        window.location = filterUrl;
+                    });
+                }
+
+
+                function pNotifyErrorAlert(msg) {
+                    new PNotify({
+                        title: '未選擇要篩選的條件!!',
+                        text: msg,
+                        type: 'error'
+                    });
+                }
+
+                function select2Init() {
+                    $("#empId").select2({
+                        placeholder: "請選擇員工",
+                        data: getEmpData().results
+                    });
+
+                    $("#diasble").select2({
+                        placeholder: "請選擇狀態",
+                    });
+
+                    $("#nationality").select2({
+                        placeholder: "請選擇國別",
+                    });
+
+                    $("#dep").select2({
+                        placeholder: "請選擇部門",
+                        data: getDepartmentData().results
+                    });
+                }
+            })(jQuery);
+        </script>
+    }

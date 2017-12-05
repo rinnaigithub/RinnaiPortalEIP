@@ -1,0 +1,351 @@
+﻿@using Portal.Provider
+
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    string tooltipContent1 = "<h4>選擇欲申請忘刷證明的員工</h4><p><br>下拉選單打開後，<br>可輸入工號或者姓名快速查詢。</p>";
+    string tooltipContent2 = "<h4>選擇欲申請的忘刷類型</h4><p><br>例：<br>上班忘刷，下班忘刷，全日忘刷。</p>";
+    string tooltipContent3 = "<h4>請輸入上班忘記刷卡日期與時間</h4>";
+    string tooltipContent4 = "<h4>請輸入下班忘記刷卡日期與時間</h4>";
+    string tooltipContent5 = "<h4>上班刷卡時間</h4><p><br>當忘刷日期一改變，將顯示忘刷員工該日刷卡之時間。</p>";
+    string tooltipContent6 = "<h4>下班刷卡時間</h4><p><br>當忘刷日期一改變，將顯示忘刷員工該日刷卡之時間。</p>";
+    string defaultYestoday = DateTime.UtcNow.AddHours(8).AddDays(-1).ToString("yyyy-MM-dd");
+    string dateNow = DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-dd hh:mm:ss");
+}
+
+<script src="~/Scripts/bootstrap-clockpicker.min.js"></script>
+<link href="~/Scripts/jquery-clockpicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-clockpicker.min.js"></script>
+<style>
+    .datepicker {
+        top: 114px;
+        left: 441px;
+    }
+
+    .popover {
+        top: 101px;
+    }
+
+        .popover.top .arrow {
+            display: none !important;
+        }
+
+    .datePicker {
+        width: 139px;
+    }
+
+    .clockpicker {
+        width: 50px;
+    }
+</style>
+<script src="~/Scripts/matrix.popover.js"></script>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"> <i class="icon-align-justify"></i> </span>
+                <h5>新增忘記刷卡單</h5>
+            </div>
+            <div class="widget-content nopadding">
+                @using (Html.BeginForm("CreateForgetPunchForm", "SignManagement", FormMethod.Post, new { id = "frmForgetPunchAdd", @class = "form-horizontal", novalidate = "novalidate" }))
+                {
+                    <div class="span5">
+                        <div class="control-group">
+                            <label class="control-label">申請人：</label>
+                            <div class="controls">
+                                <input type="text" name="name" value="@SignInProvider.Instance.User.Name" disabled />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">申請人部門單位：</label>
+                            <div class="controls">
+                                <input type="text" name="name" value="@SignInProvider.Instance.User.Department.Name" disabled />
+                            </div>
+                        </div>
+
+                        <div class="control-group" id="">
+                            <label class="control-label">申請時間</label>
+                            <div class="controls">
+                                <input type="text" name="" id="" class="" value="@dateNow" disabled>
+                            </div>
+                        </div>
+
+                        <div class="control-group" id="">
+                            <label class="control-label">實際上班刷卡時間</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContent5" data-placement="right" data-toggle="popover" class="btn btn-dark tooltip-div">
+                                    <input type="text" name="" id="realWorkBeginTime" class="" value="" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group" id="">
+                            <label class="control-label">實際下班刷卡時間</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContent6" data-placement="right" data-toggle="popover" class="btn btn-dark tooltip-div">
+                                    <input type="text" name="" id="realWorkEndTime" class="" value="" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="span7">
+
+                        <div class="control-group">
+                            <label class="control-label">忘刷員工</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContent1" data-placement="left" data-toggle="popover" class="btn btn-warning tooltip-div">
+                                    <input type="text" id="emp" name="forgetEmp" value="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">忘刷類型</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContent2" data-placement="left" data-toggle="popover" class="btn btn-danger tooltip-div">
+                                    <select id="forgetType" name="forgetType">
+                                        <option value="">請選擇</option>
+                                        <option value="1">上班忘刷</option>
+                                        <option value="2">下班忘刷</option>
+                                        <option value="3">全日忘刷</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">忘刷員工部門</label>
+                            <div class="controls">
+                                <input type="text" id="forgetEmpDep" name="forgetEmpDep" value="@SignInProvider.Instance.User.Department.Name" disabled />
+                            </div>
+                        </div>
+
+                        <div class="control-group" hidden id="forgetBeginDateDiv">
+                            <label class="control-label">上班忘刷日期/時間</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContent3" data-placement="left" data-toggle="popover" class="btn btn-info tooltip-div">
+                                    <input type="text" name="" id="startDate" class="datePicker" value="@defaultYestoday">
+                                    <input type="text" name="" id="startTime" class="clockpicker">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="control-group" hidden id="forgetEndDateDiv">
+                            <label class="control-label">下班忘刷日期/時間</label>
+                            <div class="controls">
+                                <div data-original-title="提示" data-content="@tooltipContent4" data-placement="left" data-toggle="popover" class="btn btn-success tooltip-div">
+                                    <input type="text" name="" id="endDate" class="datePicker" value="@defaultYestoday">
+                                    <input type="text" name="" id="endTime" class="clockpicker">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="control-group" id="">
+                            <label class="control-label">忘刷原因說明</label>
+                            <div class="controls">
+                                <textarea id="forgetRemark" style="width:234px;height:100px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="">
+        <input type="button" id="sumbitBtn" class="btn btn-success" value="送出申請" />
+    </div>
+</div>
+@section IncludeJS
+{
+    <script>
+
+        $(function () {
+            evenInit();
+            pluginInit();
+            selectInit();
+        })
+
+
+        //驗證欄位
+        function validInput() {
+            var reg = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+            $('.datePicker').each(function () {
+                var val = $(this).val();
+                if (val == '') {
+                    pNotifyAlert('請輸入日期');
+                    return false;
+                }
+                if (!reg.test(val)) {
+                    pNotifyAlert('日期格式不正確');
+                    return false;
+                }
+            });
+
+            if ($('#forgetType').val() == '3') {
+                var dateChk = $('#startDate').val() == $('#endDate').val();
+                if (!dateChk) {
+                    pNotifyAlert('上/下班忘刷日期必須相同');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function evenInit() {
+            $('#sumbitBtn').click(function () {
+                var isValid = validInput();
+                if (isValid) {
+                    $('#frmForgetPunchAdd')[0].submit();
+                };
+            });
+
+
+            $('.datePicker').change(function () {
+                var empId = $('#emp').val();
+                var date = $(this).val();
+
+                $.ajax({
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    contentType: 'application/json; charset=UTF-8',
+                    url: "@Url.Content("~/SignManagement/GetEmpWorkTimeByID/")",
+                    data: { empID: empId, date: date },
+                    success: function (result) {
+                        if (result.success == true) {
+                            $('#sumbitBtn').prop('disabled', '');
+                            var data = result.data;
+                            var workType = data.WorkType;
+                            var depName = data.DepartmantName;
+                            $('#startTime').val(workType.DefaultWorkBeginTIme);
+                            $('#endTime').val(workType.DefaultWorkEndTIme);
+                            $('#forgetEmpDep').val(depName);
+                            $('#realWorkBeginTime').val(data.WorkBeginTime);
+                            $('#realWorkEndTime').val(data.WorkEndTime);
+                        } else {
+                            $('#sumbitBtn').prop('disabled','none');
+                            pNotifyAlert(result.msg);
+                        }
+                    }, error: function (error) {
+                    }
+                })
+            });
+
+            //員工下拉選單
+            $('#emp').change(function () {
+                var empId = $(this).val();
+
+                $.ajax({
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    contentType: 'application/json; charset=UTF-8',
+                    url: "@Url.Content("~/SignManagement/GetEmpWorkTimeByID/")",
+                    data: { empID: empId },
+                    success: function (result) {
+                        if (result.success == true) {
+                            $('#sumbitBtn').prop('disabled', '');
+                            var data = result.data;
+                            var workType = data.WorkType;
+                            var depName = data.DepartmantName;
+                            $('#startTime').val(workType.DefaultWorkBeginTIme);
+                            $('#endTime').val(workType.DefaultWorkEndTIme);
+                            $('#forgetEmpDep').val(depName);
+                        }
+                        else {
+                            $('#sumbitBtn').prop('disabled', 'none');
+                            pNotifyAlert(result.msg);
+                        }
+
+                    }, error: function (error) {
+                    }
+                })
+            });
+
+            //忘刷類別
+            $('#forgetType').change(function () {
+                var val = $(this).val();
+                $('#forgetBeginDateDiv').hide();
+                $('#forgetEndDateDiv').hide();
+                switch (val) {
+                    case "1":
+                        $('#forgetBeginDateDiv').show();
+                        break;
+                    case "2":
+                        $('#forgetEndDateDiv').show();
+                        break;
+                    case "3":
+                        $('#forgetBeginDateDiv').show();
+                        $('#forgetEndDateDiv').show();
+                        break;
+                    default:
+                }
+            });
+        }
+
+        function pluginInit() {
+            //tooltip
+            $(".tooltip-div").popover();
+
+            //clockpicker
+            $('#startTime,#endTime').clockpicker({
+                autoclose: true,
+                placement: 'top',
+                align: 'left',
+                donetext: '設定'
+            });
+
+            //datepicker
+            $('.datePicker').datepicker(
+            {
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                //startDate: "today",
+                //clearBtn: true,
+                //calendarWeeks: true,
+                todayHighlight: true,
+                language: 'zh-TW'
+            });
+        }
+
+        function selectInit() {
+
+            $("#emp").select2({
+                placeholder: "請選擇員工",
+                data: getEmpData().results
+            });
+
+            $("#emp").val('@SignInProvider.Instance.User.ID').trigger('change');
+        }
+
+        //志元員工檔
+        function getEmpData() {
+            var result;
+            $.ajax({
+                type: "GET",
+                async: false,
+                dataType: "json",
+                contentType: 'application/json; charset=UTF-8',
+                url: "@Url.Content("~/api/publicfunction/GetSmartManAllEmployeeDataJson/")",
+                //data: JSON.stringify(model),
+                success: function (data) {
+                    result = data;
+                }, error: function (error) {
+                }
+            })
+            return result;
+        }
+
+
+    </script>
+}

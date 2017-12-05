@@ -1,0 +1,174 @@
+﻿@using Portal.Models.MenuModels.MenuListModels
+@model MenuListViewModel
+@using PagedList;
+@using PagedList.Mvc;
+<style>
+    .back-red {
+        background-color: #da4f49 !important;
+        color: white !important;
+    }
+</style>
+
+<table id="menuTable" class="table table-bordered data-table tablesorter">
+    <thead>
+        <tr>
+            <th>管理</th>
+            <th>目錄代碼</th>
+            <th>目錄名稱</th>
+            <th>狀態</th>
+            <th>呈現狀態</th>
+            <th>子目錄數</th>
+            <th>實作</th>
+            <th>建立者</th>
+            <th>建立日</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Result.Data.Count == 0)
+        {
+            <tr><td colspan="9"><span style="color:red;">查無資料!</span></td></tr>
+        }
+        @foreach (var menu in Model.Result.Data)
+        {
+            string disableDesc = string.Empty;
+            string disableClass = string.Empty;
+            string disableDisplayDesc = string.Empty;
+            string disableDisplayClass = string.Empty;
+            string isMadeSiteDesc = menu.IsMade ? "是" : "否";
+            if (!menu.MenuStatus)
+            {
+                disableDesc = "停用";
+                disableClass = "back-red";
+            }
+            else
+            {
+                disableDesc = "啟用";
+            }
+            if (!menu.MenuDisplayStatus)
+            {
+                disableDisplayDesc = "停用";
+                disableDisplayClass = "back-red";
+            }
+            else
+            {
+                disableDisplayDesc = "啟用";
+            }
+            
+            
+
+            <tr class="gradeX">
+                <td>
+                    <button class="btn btn-info" type="button" onclick="location.href='@Url.Content("~/Menu/MenuEdit?muID=" + menu.MenuID)'">
+                        <i class="icon-edit"></i>
+                        <span>編輯</span>
+                    </button>
+
+                    <button class="btn btn-danger delMenuBtn" type="button" menu-id="@menu.MenuID" menu-name="@menu.MenuName">
+                        <i class="icon-remove"></i>
+                        <span>刪除</span>
+                    </button>
+                </td>
+                <td>@menu.MenuID</td>
+                <td>@menu.MenuName</td>
+                <td class="@disableClass">@disableDesc</td>
+                <td class="@disableDisplayClass">@disableDisplayDesc</td>
+                <td>@menu.SubMenuCount</td>
+                <td>@isMadeSiteDesc</td>
+                <td>@menu.BuildUserADAccount</td>
+                <td>@menu.BuildDateStr</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model.Result.Data, page => Url.Action("MemBerList",
+                new
+                {
+                    page,
+                    qry = ViewBag.SearchStr,
+                    target = ViewBag.Targer,
+                    sMothMd = Model.Filter.Status
+                }))
+
+<div id="pageInfo">
+    Page @(Model.Result.Data.PageCount < Model.Result.Data.PageNumber ? 0 : Model.Result.Data.PageNumber) of @Model.Result.Data.PageCount
+    (共 @Model.Result.Data.TotalItemCount 筆)
+</div>
+<script>
+
+    $(function () {
+        if (parseInt('@Model.Result.Data.Count') > 0) {
+            //sort
+            $("#menuTable").tablesorter(
+                {
+                    headers: {
+                        0: {
+                            sorter: false
+                        },
+                    },
+                    sortList: [[1, 0]]
+                });
+        }
+
+        $('.delMenuBtn').click(function () {
+            var mID = $(this).attr('menu-id');
+            var mName = $(this).attr('menu-name');
+
+            var jc= $.confirm({
+                title: '提示',
+                content: '確定要<span style="color:red;font-size:2em;">刪除</span>目錄：<span style="color:green;font-size:2em;">' + mName + '?</span> 這將會一併刪除該目錄下的所有子目錄，以及所有有使用這個目錄的<span color="red" style="font-size="2em"">角色</span>都將會失去使用這個目錄的資權限!',
+                buttons: {
+                    confirm: {
+                        text: '確定',
+                        action: function () {
+                            $.ajax({
+                                type: "POST",
+                                async: false,
+                                data: { muID: mID },
+                                dataType: "json",
+                                //contentType: 'application/json; charset=UTF-8',
+                                url: "@Url.Content("~/Menu/MenuDelete/")",
+                                //data: JSON.stringify(model),
+                                success: function (data) {
+                                    if (data.success) {
+                                        ConfirmAlert('刪除成功');
+                                    }
+                                    else {
+                                        pNotifyErrorAlert(data.msg);
+                                    }
+                                }, error: function (error) {
+                                    jc.close();
+                                    ConfirmAlert(error.responseText);
+                                }
+                            })
+                        }
+                    },
+                    cancel:
+                    {
+                        text: '取消',
+                        action: function () {
+                        }
+                    }
+                }
+            });
+        });
+    });
+
+    function ConfirmAlert(msg) {
+        //return false;
+        $.confirm({
+            type: 'orange',
+            typeAnimated: true,
+            theme: 'supervan',
+            title: '提醒!',
+            content: msg,
+            buttons: {
+                confirm: {
+                    text: '確定',
+                    action: function () {
+                        window.location.reload();
+                    }
+                },
+            }
+        });
+    }
+</script>

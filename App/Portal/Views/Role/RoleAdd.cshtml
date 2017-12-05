@@ -1,0 +1,389 @@
+﻿@using Portal.Models.MenuModels.MenuSaveModels
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    .table td {
+        text-align: center;
+    }
+</style>
+<div class="row-fluid">
+    @using (Html.BeginForm("RoleAdd", "Role", FormMethod.Post, new { id = "frmRoleAdd" }))
+    {
+        <div class="span2">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>角色新增</h5>
+                </div>
+                <div class="widget-content">
+
+                    <div class="control-group">
+                        <label class="control-label">角色名稱 :</label>
+                        <div class="controls">
+                            <input type="text" class="span12" placeholder="請輸入角色名稱" name="roleName" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">角色代碼 :</label>
+                        <div class="controls">
+                            <input type="text" class="span12" placeholder="請輸入角色代碼" name="roleCode" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">停用</label>
+                        <div class="controls">
+                            <label>
+                                <input type="radio" name="Disabled" value="Y"/>
+                                是
+                            </label>
+                            <label>
+                                <input type="radio" name="Disabled" value="N" checked />
+                                否
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">角色描述</label>
+                        <div class="controls">
+                            <textarea style="height:250px;" class="span12" placeholder="請輸入角色描述" name="roleDesc"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="submitBtn" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span10">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"> <i class="icon-align-justify"></i> </span>
+                    <h5>權限分配</h5>
+                </div>
+
+                <div class="widget-content">
+                    <div class="row-fluid">
+                        <div class="span5">
+                            <!--table start-->
+                            <table id="agreeTable" class="table table-bordered data-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="4">
+                                            持有目錄瀏覽權限
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th><input type="checkbox" id="agree-chkAll" /></th>
+                                        <th>目錄代碼</th>
+                                        <th>根目錄代碼</th>
+                                        <th>目錄名稱</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="agreeTbody">
+                                    @foreach (var mu in (ViewBag.MenuList as List<MenuDataModel>))
+                                    {
+                                        <tr class="gradeX" style="display: none;">
+                                            <td><input type="checkbox" class="agree-chk" mu-id="@mu.MenuID" mu-pid="@mu.ParentMenuID" /></td>
+                                            <td>@mu.MenuID</td>
+                                            <td>@mu.ParentMenuID</td>
+                                            <td>@mu.MenuName</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <!--table end-->
+                        </div>
+                        <div class="span2" style="margin-top:15%;">
+
+                            <div style="margin-left: auto; margin-right:auto;margin-bottom:10px;  width: 50px;">
+                                <button class="btn btn-lg btn-warning" type="button" id="toRight">
+                                    <i class="icon-arrow-right"></i>
+                                </button>
+                            </div>
+
+                            <div style="margin-left: auto; margin-right: auto; width: 50px;">
+                                <button class="btn btn-lg btn-warning" type="button" id="toLeft">
+                                    <i class="icon-arrow-left"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="span5">
+                            <!--table start-->
+
+                            <table id="refuseTable" class="table table-bordered data-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="4">
+                                            未持有目錄瀏覽權限
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th><input type="checkbox" id="refuse-chkAll" /></th>
+                                        <th>目錄代碼</th>
+                                        <th>根目錄代碼</th>
+                                        <th>目錄名稱</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="refuseTbody">
+
+                                    @foreach (var mu in (ViewBag.MenuList as List<MenuDataModel>))
+                                    {
+                                        <tr class="gradeX">
+                                            <td><input type="checkbox" class="refuse-chk" mu-id="@mu.MenuID" mu-pid="@mu.ParentMenuID" /></td>
+                                            <td>@mu.MenuID</td>
+                                            <td>@mu.ParentMenuID</td>
+                                            <td>@mu.MenuName</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <!--table end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section IncludeJS
+{
+    <script>
+        $(function () {
+            if ('@TempData["Error"]' != '') {
+                confirmAlert('@TempData["Error"]');
+            }
+
+            $('#submitBtn').click(function () {
+                if (!$("#frmRoleAdd").valid()) {
+                    return;
+                }
+
+                var formData = document.getElementById('frmRoleAdd');
+                formData = new FormData(formData);
+                var $agree = $('#agreeTbody tr').not(':hidden').find("input[type=checkbox]");
+                var $refuse = $('#refuseTbody tr').not(':hidden').find("input[type=checkbox]");
+
+                var agreeAry = [];
+                var refuseAry = [];
+                $agree.each(function () {
+                    agreeAry.push($(this).attr('mu-id'));
+                });
+
+                $refuse.each(function () {
+                    refuseAry.push($(this).attr('mu-id'));
+                });
+
+                formData.append('agreeAry', agreeAry.join());
+                formData.append('refuseAry', refuseAry.join());
+                url = "@Url.Content("~/Role/RoleAdd/")";
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    url: url,
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        window.location.href = response.Url;
+                    },
+                    error: function (error) {
+                    }
+                });
+            });
+
+            $('#toRight').click(function () {
+                var trAry = [];
+                $('.agree-chk:checked').each(function () {
+                    var $tr = $(this).parents('tr');
+                    trAry.push($(this).attr('mu-id'));
+                    $tr.hide();
+                });
+
+                for (var i = 0; i < trAry.length; i++) {
+                    $('.refuse-chk').each(function () {
+                        var id = $(this).attr('mu-id');
+                        if (id == trAry[i]) {
+                            $(this).parents('tr').show();
+                        }
+                    });
+                }
+                if (trAry.length > 0) {
+                    $('.refuse-chk').prop('checked', false);
+                }
+            });
+
+            $('#toLeft').click(function () {
+                var trAry = [];
+                $('.refuse-chk:checked').each(function () {
+                    var $tr = $(this).parents('tr');
+                    trAry.push($(this).attr('mu-id'));
+                    $tr.hide();
+                });
+
+                for (var i = 0; i < trAry.length; i++) {
+                    $('.agree-chk').each(function () {
+                        var id = $(this).attr('mu-id');
+                        if (id == trAry[i]) {
+                            $(this).parents('tr').show();
+                        }
+                    });
+                }
+                if (trAry.length > 0) {
+                    $('.agree-chk').prop('checked', false);
+                }
+            });
+
+            $('#agree-chkAll').on('change', function () {
+                chkMode = $(this).prop('checked');
+                $('.agree-chk').not(':hidden').prop('checked', chkMode);
+            });
+
+            $('#refuse-chkAll').on('change', function () {
+                chkMode = $(this).prop('checked');
+                $('.refuse-chk').not(':hidden').prop('checked', chkMode);
+
+            });
+
+            $('.agree-chk').on('change', function () {
+                if ($(this).prop('checked')) {
+                    checkedForward(this);
+                }
+                else {
+                    cancelCheckedForward(this);
+                }
+            });
+
+            $('.refuse-chk').on('change', function () {
+                if ($(this).prop('checked')) {
+                        checkedReverse(this);
+                }
+                else {
+                        cancelCheckedReverse(this);
+                }
+            });
+
+            //勾選反向判斷
+            function checkedReverse(elem) {
+                var muId = $(elem).attr('mu-id');
+                var muPId = $(elem).attr('mu-pid');
+                if (typeof muPId !== 'undefined') {
+                    $('#refuseTbody').find("input[mu-id=" + muPId + "]").prop('checked', true);
+                    var $sub = $('#refuseTbody').find("input[mu-id=" + muPId + "]");
+                    checkedReverse($sub);
+                }
+            }
+            //勾選反向判斷
+            function cancelCheckedReverse(elem) {
+                //取顯示的tr
+                var $displayTr = $('#refuseTbody tr').not(':hidden');
+                //取得自己的ID
+                var muId = $(elem).attr('mu-id');
+                //取消勾選自己
+                $(elem).prop('checked', false);
+                //取消勾選所有父ID為自己的
+                $displayTr.each(function () {
+                    var $chk = $(this).find("input[mu-pid=" + muId + "]");
+                    if ($chk.attr('mu-pid') == muId) {
+                        $chk.prop('checked', false);
+                        //判斷父ID若自己的是否也同為別人的父ID
+                        cancelCheckedReverse($chk);
+                    }
+                });
+            }
+
+
+
+            //取消勾選正向判斷
+            function cancelCheckedForward(elem) {
+                //取顯示的tr
+                var $displayTr = $('#agreeTbody tr').not(':hidden');
+                //取得自己的ID
+                var muId = $(elem).attr('mu-id');
+                //取消勾選自己
+                $(elem).prop('checked', false);
+                //取消勾選所有父ID為自己的
+                $displayTr.each(function () {
+                    var $chk = $(this).find("input[mu-pid=" + muId + "]");
+                    if ($chk.attr('mu-pid') == muId) {
+                        $chk.prop('checked', false);
+                        //判斷父ID若自己的是否也同為別人的父ID
+                        cancelCheckedForward($chk);
+                    }
+                });
+            }
+
+            //勾選正向判斷
+            function checkedForward(elem) {
+                //取顯示的tr
+                var $displayTr = $('#agreeTbody tr').not(':hidden');
+                //取得自己的ID
+                var muId = $(elem).attr('mu-id');
+                //勾選自己
+                $(elem).prop('checked', true);
+                //勾選所有父ID為自己的
+                $displayTr.each(function () {
+                    var $chk = $(this).find("input[mu-pid=" + muId + "]");
+                    if ($chk.attr('mu-pid') == muId) {
+                        $chk.prop('checked', true);
+                        //判斷父ID若自己的是否也同為別人的父ID
+                        checkedForward($chk);
+                    }
+                });
+            }
+
+    
+            function confirmAlert(msg) {
+                //return false;
+                $.confirm({
+                    type: 'orange',
+                    typeAnimated: true,
+                    theme: 'supervan',
+                    title: '提醒!',
+                    content: msg,
+                    buttons: {
+                        confirm: {
+                            text: '確定',
+                            action: function () {
+                            }
+                        },
+                    }
+                });
+            }
+
+            var validator = $("#frmRoleAdd").validate({
+                rules: {
+                    roleName: { required: true },
+                    roleCode: { required: true },
+                },
+                messages: {
+                    roleName: { required: "請輸入角色名稱" },
+                    roleCode: { required: "請輸入角色代碼" },
+                },
+                //在Submit之前，且驗證失敗。
+                invalidHandler: function () {
+                },
+                errorClass: "help-inline",
+                errorElement: "span",
+                ////單項證驗失敗，參數是驗證對像
+                highlight: function (element, errorClass, validClass) {
+                    $(element).parents('.control-group').removeClass('success');
+                    $(element).parents('.control-group').addClass('error');
+                    $(element).fadeOut(function () {
+                        $(element).fadeIn();
+                    });
+                },
+                //單項證驗成功，參數是驗證對像
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).parents('.control-group').removeClass('error');
+                    $(element).parents('.control-group').addClass('success');
+                }
+            })
+
+        })
+    </script>
+}

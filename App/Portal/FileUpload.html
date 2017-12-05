@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style>
+        /** {
+            margin: 0;
+            padding: 0;
+            font-family: tahoma;
+        }
+
+        body {
+            padding: 30px;
+        }
+
+        div {
+            width: 400px;
+            height: 25px;
+            background-color: white;
+            box-shadow: 1px 2px 3px #ededed;
+            position: relative;
+            border: 1px solid #d8d8d8;
+        }
+
+        input[type='file'] {
+            width: 400px;
+            height: 25px;
+            opacity: 0;
+        }
+
+        #val {
+            width: 400px;
+            height: 25px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 13px;
+            line-height: 25px;
+            text-indent: 10px;
+            pointer-events: none;
+        }
+
+        #button {
+            cursor: pointer;
+            display: block;
+            width: 90px;
+            background-color: purple;
+            height: 25px;
+            color: white;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 11px;
+            line-height: 25px;
+            text-align: center;
+            -webkit-transition: 500ms all;
+            -moz-transition: 500ms all;
+            transition: 500ms all;
+        }
+
+            #button:hover {
+                background-color: blue;
+            }*/
+    </style>
+</head>
+<body>
+    <div>
+        <input type='file' multiple/> 
+        <span id="val"></span>
+        <!--<span id='button'>Select File</span>-->
+        <img id='output' width="100">
+
+    </div>
+    <script>
+        var fileList = [];
+        //$('#button').click(function () {
+        //    $("input[type='file']").trigger('click');
+        //})
+
+        $("input[type='file']").change(function (event) {
+            var files = this.files;
+
+            for (var i = 0; i < files.length; i++) {
+                fileList.push(files[i]);
+                var $span = '<span>' + files[i].name + '</span></br>';
+                $('#output').append($span);
+            }
+            $('#val').html('選擇了共' + files.length + '檔案');
+
+            //var input = event.target.value;
+            //$('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
+            //console.log(input.value);
+
+        })
+
+        //var openFile = function (event) {
+        //    console.log(event);
+        //    var input = event.target;
+
+        //    var reader = new FileReader();
+        //    reader.onload = function () {
+        //        var dataURL = reader.result;
+        //        var output = document.getElementById('output');
+        //        output.src = dataURL;
+        //    };
+        //    reader.readAsDataURL(input.files[0]);
+        //};
+    </script>
+</body>
+</html>

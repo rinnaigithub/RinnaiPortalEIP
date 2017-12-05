@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df9f21d4b4834a728f579d99438e51ff" Name="Diagram1">
+        <EntityTypeShape EntityType="TESTPORTALModel.BbsContent" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.OvertimeForm" Width="1.5" PointX="7.75" PointY="5.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.PTUserRoleMap" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SalaryLimit" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SignAgent" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SignDocCode" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SignForm_Detail" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SignForm_Log" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SignForm_Main" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SignProcedure" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SignType" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SysGroup" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.SystemArchitecture" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.ForgotPunchForm" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.PeriodType" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.UserPriority" Width="1.5" PointX="13.75" PointY="3.75" />
+        <AssociationConnector Association="TESTPORTALModel.FK_SignForm_Detail_SignForm_Main" />
+        <AssociationConnector Association="TESTPORTALModel.FK_SignForm_Main_SignType" />
+        <AssociationConnector Association="TESTPORTALModel.FK_SignType_SignType" />
+        <EntityTypeShape EntityType="TESTPORTALModel.Department" Width="1.5" PointX="14.375" PointY="7.25" />
+        <EntityTypeShape EntityType="TESTPORTALModel.Employee" Width="1.5" PointX="16.625" PointY="7" />
+        <AssociationConnector Association="TESTPORTALModel.FK_Employee_DepartmentID" />
+        <EntityTypeShape EntityType="TESTPORTALModel.PTSYSLOGERR" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.PTFunction" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.PTRole" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.PTRoleMenuMap" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TESTPORTALModel.PTMenu" Width="1.5" PointX="14.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

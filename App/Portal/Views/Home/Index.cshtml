@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@using (Html.BeginForm("index", "home", FormMethod.Post, new { id = "frHome", @class = "" }))
+{
+    <h1>Hello Rinnai</h1>
+}
+
+@section IncludeCSS{
+}
+@section IncludeJS{
+    <script>
+        $(function () {
+        })
+    </script>
+
+
+}
